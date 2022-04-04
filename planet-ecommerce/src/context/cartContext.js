@@ -20,50 +20,6 @@ const CartProvider = ({children}) => {
       setCart(response.data.cart);
     }
 
-    // async function incrementCart (productId, setCart){
-    //   const response = await axios({
-    //     method: 'post',
-    //     url: `/api/user/cart/${productId}`,
-    //     headers: { authorization: localStorage.getItem('token') },
-    //     data:{ action: { type: 'increment' } }
-    //   });
-    //   setCart(response.data.cart);
-    // }
-    
-    // async function updateQtyCart (action, productId){
-    //   const response = await axios({
-    //     method: 'post',
-    //     url: `/api/user/cart/${productId}`,
-    //     headers: { authorization: localStorage.getItem('token') },
-    //     data:{ action: { type: 'decrement' } }
-    //   });
-    //   setCart(response.data.cart);
-    // }
-
-    // const changeCartQty = async (actionType, id) => {
-    //   console.log("hhhhhhhhhhhhhhhh",actionType, id);
-    //   try {
-        
-    //     const response = await axios.post(
-    //       {
-    //         method: 'post',
-    //         url: `/api/user/cart/${id}`,
-    //         headers: { authorization: localStorage.getItem('token') },
-    //         action: { type: actionType }
-    //       }
-         
-    //     );
-    //     console.log("111111111111111111", response);
-    //     if (response.status === 200) {
-    //       console.log("increment/decrement qty:",response )
-    //       setCart(response.data.cart);
-         
-    //     }
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
-
     const changeCartQty = async (actionType, id) => {
       try {
         const response = await axios.post(
@@ -79,6 +35,7 @@ const CartProvider = ({children}) => {
             },
           }
         );
+
         if (response.status === 200) {
           console.log("increment/decrement qty:",response )
           setCart(response.data.cart);
@@ -99,11 +56,9 @@ const CartProvider = ({children}) => {
               authorization: localStorage.getItem('token'),
           },
         })
-        console.log("this is autdffash",response);
         setCart(response.data.cart);
       };
 
-      console.log("this is carttttt",cart);
     
     return(
         <CartContext.Provider value={{ cart, setCart , total, setTotal , addToCart, removeFromCart, changeCartQty }}>
