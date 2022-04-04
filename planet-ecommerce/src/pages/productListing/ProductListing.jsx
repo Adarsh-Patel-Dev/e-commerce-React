@@ -1,5 +1,4 @@
 import "./productlisting.css"
-import { FaRegHeart, FaStar } from "react-icons/fa";
 import { CardVertical } from "../../components/card/CardVertical";
 import { Navigation } from "../../components/navigation/Navigation";
 import { useEffect, useState, useContext } from 'react';
@@ -14,7 +13,6 @@ const ProductListing = () =>{
     const [ productListing, setProductListing ] = useState([]);
    const {cart,setCart, addToCart} = useContext(CartContext);
    const { setWishlist, addToWishlist } = useContext(WishlistContext);
-console.log("from productlisting ",cart);
 
     useEffect(() => {  
     (async ()=>{
@@ -138,7 +136,7 @@ console.log("from productlisting ",cart);
         <section class="body-section">
             <AsideBar/>
           <section class="main-section">
-            <h2 class="main-section-title">Result <span style={{color: "green"}}>(234)</span> : RainForest indoor plants
+            <h2 class="main-section-title">Results: <span style={{color: "green"}}>({finalCategoryData.length})</span>
             </h2>
             <div class="main-section-card">
 

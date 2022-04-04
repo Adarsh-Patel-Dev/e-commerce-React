@@ -9,7 +9,7 @@ import axios  from "axios";
 
 const CartPage = () => {
 
-    const { cart, setCart, addToCart, removeFromCart } = useContext(CartContext);
+    const { cart, setCart, addToCart, removeFromCart , incrementCart, decrementCart} = useContext(CartContext);
 
     const { wishlist, setWishlist, addToWishlist } = useContext(WishlistContext);
 
@@ -27,9 +27,22 @@ const CartPage = () => {
                setCart(response.data.cart);
            }
        })();
-    }, []);
+    }, [cart]);
     
     console.log("my cart has",cart);
+
+    const price = cart.reduce(
+        (acc, item) => acc + Number(item.qty) * Number(item.originalPrice),
+        0
+      );
+      const discountPrice = cart.reduce(
+        (acc, item) =>
+          acc + (Number(item.originalPrice) - Number(item.discountPrice)),
+        0
+      );
+
+      const totalPrice = price - discountPrice;
+
 
 
     return(

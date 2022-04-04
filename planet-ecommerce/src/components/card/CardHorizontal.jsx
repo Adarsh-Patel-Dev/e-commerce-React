@@ -1,20 +1,24 @@
 import "./card.css";
 import { FaRegHeart, FaStar, FaShoppingCart } from "react-icons/fa";
 import { useEffect, useState, useContext } from 'react';
+import { CartContext } from "../../context/cartContext";
 
-const CardHorizontal = ({product, addToWishlist, removeFromCart}) => {
+const CardHorizontal = ({product, addToWishlist, removeFromCart }) => {
 
-    const [counter, setCounter] = useState(1);
+    const { changeCartQty } = useContext(CartContext);
 
-    function increment () {
-        setCounter(counter + 1);
-    }
+    // const [counter, setCounter] = useState(1);
 
-    function decrement () { 
-        setCounter(counter - 1);
-    }
+    // function increment () {
+    //     setCounter(counter + 1);
+    // }
+
+    // function decrement () { 
+    //     setCounter(counter - 1);
+    // }
 
     const {title, desc, rating, instock,  price:{original, discount, discounted}, categoryName , img} = product;
+    
 
     return(
         <div className="card card--horizontal">
@@ -41,12 +45,13 @@ const CardHorizontal = ({product, addToWishlist, removeFromCart}) => {
                                 </div>
                                 <div className="card--item-qty">
                                     <div className="card--qty">
-                                        <button className="btn-minus"
-                                        onClick={increment}>-</button>
+                                        <button className="btn-minus" 
+                                        // disabled={(counter>1)?false:true}
+                                        onClick={()=>changeCartQty("decrement", product._id)}>-</button>
 
-                                        <input type="text" value={counter} className="card--qty-input" />
+                                        <label type="text"  className="card--qty-input">{product.qty}</label>
                                         <button className="btn-plus"
-                                        onClick={decrement}>+</button>
+                                        onClick={()=>changeCartQty("increment", product._id)}>+</button>
                                     </div>
                                 </div>
                             </div>

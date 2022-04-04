@@ -1,4 +1,3 @@
-import { FaRegHeart, FaStar, FaShoppingCart } from "react-icons/fa";
 import { Navigation } from "../../components/navigation/Navigation";
 import "./wishlistPage.css"
 import { useContext, useEffect } from "react";

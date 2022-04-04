@@ -8,19 +8,6 @@ const WishlistContext = createContext();
 const WishlistProvider = (props) => {
     const [wishlist, setWishlist] = useState([]);
 
-    // async function removeFromWishlist(productId){
-    //     const response = await axios({
-    //         method: 'delete',
-    //         url: `/api/user/wishlist/${productId}`,
-    //         headers: {
-    //             authorization: localStorage.getItem("token"),
-    //         },
-    //         data:{
-    //             productId: productId
-    //         }
-
-    //     })
-    // }
 
     async function removeFromWishlist(productId, setWishlist){
         const response = await axios({
@@ -46,10 +33,9 @@ const WishlistProvider = (props) => {
           setWishlist(response.data.wishlist);
           
      }
-   
 
+     
    
-
     return (
         <WishlistContext.Provider value={{ wishlist, setWishlist, removeFromWishlist, addToWishlist }}>
         {props.children}
