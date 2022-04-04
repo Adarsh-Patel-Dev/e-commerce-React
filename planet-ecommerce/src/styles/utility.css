@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@300&family=Montserrat:wght@100;300;500;700;900&family=Zen+Antique&family=Zen+Kurenaido&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+:root {
+    font-size: 62.5%;
+
+    font-family: 'Montserrat', sans-serif;
+
+    --primary-color: #2196f3;
+
+    --RED: #ff0000;
+    --RED-50: #f75353;
+    --RED-20: #f2dede;
+    --GREEN: #01aa01;
+    --GREEN-50: #51f751d2;
+    --GREEN-20: #dff0d8;
+    --ORANGE: #ce8602;
+    --ORANGE-50: #f7bb4c;
+    --ORANGE-20: #fcf8e3;
+    --BLUE: #0000ff7e;
+    --BLUE-50: #5353f1;
+    --BLUE-80: #3d3df3;
+
+    --BLUE-20: #d9edf7;
+
+    --WHITE: #ffffff;
+    --GRAY-80: #333333;
+    --GREY-60: #929191;
+    --GRAY-40: #8f8e8e;
+    --GRAY-50: #7e7a7a;
+    --GRAY-20: #C4C4C4;
+    --GRAY-10: #f8f8f8;
+    --BLACK-100: #000000;
+    --BLACK-80: #010101;
+    --BLACK-60: #151515;
+    --MAROON-80: #2D1111;
+    --MAROON-60: #2F1212;
+
+    --LIGHT-GREEN: #76C310;
+
+    --BOX-SHADOW: #868585;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}

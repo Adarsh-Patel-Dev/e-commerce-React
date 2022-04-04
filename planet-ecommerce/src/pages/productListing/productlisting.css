@@ -1,0 +1,144 @@
+.body-section{
+    display: flex;
+    grid-column: 20rem 1fr;
+}
+
+.aside-section{
+    background-color: gainsboro;
+    overflow-y: scroll;
+    /* max-height: 200%; */
+    min-width: 25rem;
+    padding: 2rem 2.5rem;
+}
+
+.main-section{
+    /* background-color: rgba(189, 204, 189, 0.781); */
+    width: 100%;
+    width: auto;
+    overflow-y: auto;
+    overflow-x: clip;
+    height: calc(100vh - 6.24rem);
+    display: flex;
+    flex-direction: column;
+    margin-top: 1px;
+}
+
+.aside-section-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0rem;
+}
+
+.aside-section-title{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.clear-btn{
+    text-decoration: none;
+    color: var(--GREEN);
+    font-weight: 500;
+    font-size: 1.5rem;
+    transition: 0.5s;
+}
+
+.clear-btn:hover{
+    transition: 0.5s;
+    text-decoration: none;
+   background-color: var(--GREEN-50);
+   color: black;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.price-section{
+    margin: 2rem 0rem;
+}
+
+.aside-section-title-md{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.range-input-container{
+    padding: 1.5rem 0rem;
+}
+
+.price-label{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 18rem;
+}
+
+.input-range{
+    accent-color: var(--GREEN);
+    width: 18rem;
+    font-size: larger;
+}
+
+.checkbox-input{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    accent-color: var(--GREEN-50);
+}
+
+.category-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.checkbox{
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.rating-section{
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.radio{
+    width: 1.5rem;
+    height: 1.5rem;
+    accent-color: var(--GREEN-50);
+}
+
+.fa-star{
+    font-size: 1.5rem;
+}
+
+.radio-input{
+    accent-color: green;
+     display: flex;
+    gap: 10px;
+    align-items: flex-end;
+   
+}
+
+/*main-section*/
+
+.main-section{
+    padding: 3rem ;
+}
+
+.main-section-title{
+    font-size: 3rem;
+    font-weight: 550;
+}
+
+.main-section-card{
+   margin-top: 4rem;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 4rem;
+   justify-content: center;
+   align-items: center;
+}
