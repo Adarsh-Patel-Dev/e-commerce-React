@@ -1,25 +1,20 @@
+import "./landingPage.css";
 import { FaArrowRight, FaArrowDown } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { Navigation } from "../../components/navigation/Navigation";
-import "./landingPage.css";
+import { Navigation , CardVertical , Category} from "../../components/";
 import HeroImg from "../../images/pngegg.png"
-import { ProductPageContext } from "../../context/productPageContext";
-import { CartContext } from "../../context/cartContext";
-import { WishlistContext } from "../../context/wishListContext";
-import { CardVertical } from "../../components/card/CardVertical";
-import { useContext, useEffect  } from "react";
+import {useCategoryContext, useCartContext, useWishlistContext, useProductPageContext } from "../../context/";
+import {  useEffect  } from "react";
 import axios from "axios";
-import Category from "../../components/category/Category";
-import { CategoryContext } from "../../context/categoryContext";
 
 
 const LandingPage = () => {
 
-    const { category, setCategory } = useContext(CategoryContext);
+    const { category, setCategory } = useCategoryContext();
 
-    const { productListing, setProductListing } = useContext(ProductPageContext);
-    const {cart,setCart, addToCart} = useContext(CartContext);
-    const { setWishlist, addToWishlist } = useContext(WishlistContext);
+    const { productListing, setProductListing } = useProductPageContext();
+    const {cart,setCart, addToCart} = useCartContext();
+    const { setWishlist, addToWishlist } = useWishlistContext();
 
     console.log("this is products", productListing);    
     console.log("this is cart", cart);   
@@ -41,10 +36,9 @@ const LandingPage = () => {
 
         <section className="hero-section">
 
-        <div className="hero-text">The Best <span style={{color: "#76C310"}}>PLANTS</span>
+        <div className="hero-text">The Best <span className="light-green">PLANTS</span>
         <p className="hero-section-para">FOR YOUR HOME</p>
      <div className="cta-btns">
-       {/* <NavLink to='/products'> <button className="secondary-cta" >Explore <FaArrowDown style={{fontSize: "18px"}}/></button></NavLink> */}
        <NavLink to='/products'><button className="primary-cta" >Buy Now <FaArrowRight style={{fontSize: "18px"}}/></button></NavLink>
     </div>
 </div>

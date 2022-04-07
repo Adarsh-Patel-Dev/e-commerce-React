@@ -1,17 +1,14 @@
-import { CardHorizontal } from "../../components/card/CardHorizontal";
-import { CardVertical } from "../../components/card/CardVertical";
-import { Navigation } from "../../components/navigation/Navigation";
+import { CardHorizontal, Navigation } from "../../components/";
 import "./cartPage.css";
-import { CartContext } from "../../context/cartContext";
-import { WishlistContext } from "../../context/wishListContext";
+import { useWishlistContext , useCartContext } from "../../context"
 import { useContext, useEffect } from "react";
 import axios  from "axios";
 
 const CartPage = () => {
 
-    const { cart, setCart, addToCart, removeFromCart , incrementCart, decrementCart} = useContext(CartContext);
+    const { cart, setCart, addToCart, removeFromCart , incrementCart, decrementCart} = useCartContext();
 
-    const { wishlist, setWishlist, addToWishlist } = useContext(WishlistContext);
+    const { wishlist, setWishlist, addToWishlist } = useWishlistContext();
 
     
 
@@ -49,7 +46,7 @@ const CartPage = () => {
         <>  
         <Navigation/>
 
-            <h3 class="cart-heading">My <span style={{color: "green"}}>Cart({cart.length})</span></h3>
+            <h3 class="cart-heading">My <span className="green">Cart({cart.length})</span></h3>
         <section class="cart-section">
 
         <div class="card-component">

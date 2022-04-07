@@ -1,8 +1,9 @@
-import { createContext, useState
+import { createContext, useState, useContext
  } from "react";
 
 
 const CategoryContext = createContext();
+const useCategoryContext = () => useContext(CategoryContext);
 
 const CategoryProvider = ({children}) =>{
     const [category, setCategory] = useState([]);
@@ -39,4 +40,4 @@ const CategoryProvider = ({children}) =>{
   )
 }
 
-export  { CategoryContext, CategoryProvider };
+export  { useCategoryContext, CategoryProvider };

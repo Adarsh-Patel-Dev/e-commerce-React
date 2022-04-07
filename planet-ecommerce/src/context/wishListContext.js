@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const WishlistContext = createContext();
+const useWishlistContext = () => useContext(WishlistContext);
 
 
 const WishlistProvider = (props) => {
@@ -43,4 +44,4 @@ const WishlistProvider = (props) => {
     )
 }
 
-export { WishlistContext, WishlistProvider };
+export { useWishlistContext , WishlistProvider };

@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useEffect, useState } from "react";
 
 const ProductPageContext = createContext();
+const useProductPageContext = () => useContext(ProductPageContext);
 
 
 
@@ -22,4 +23,4 @@ const ProductPageProvider = ({children}) => {
     );
 }
 
-export { ProductPageProvider, ProductPageContext };
+export { ProductPageProvider, useProductPageContext };

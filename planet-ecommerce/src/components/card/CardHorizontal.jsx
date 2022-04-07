@@ -1,11 +1,11 @@
 import "./card.css";
 import { FaRegHeart, FaStar, FaShoppingCart } from "react-icons/fa";
 import { useEffect, useState, useContext } from 'react';
-import { CartContext } from "../../context/cartContext";
+import { useCartContext } from "../../context/cartContext";
 
 const CardHorizontal = ({product, addToWishlist, removeFromCart }) => {
 
-    const { changeCartQty } = useContext(CartContext);
+    const { changeCartQty } = useCartContext();
 
     // const [counter, setCounter] = useState(1);
 

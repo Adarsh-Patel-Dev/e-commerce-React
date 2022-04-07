@@ -3,14 +3,14 @@ import "./navigation.css";
 
 import { FaSearch, FaRegHeart, FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { CartContext } from "../../context/cartContext";
-import { useContext, useEffect } from "react";
-import { WishlistContext } from "../../context/wishListContext";
+import { useCartContext } from "../../context/cartContext";
+import {  useEffect } from "react";
+import { useWishlistContext } from "../../context/wishListContext";
 
 const Navigation = () => {
 
-    const { cart, setCart } = useContext(CartContext);
-    const { wishlist , setWishlist } = useContext(WishlistContext);
+    const { cart, setCart } = useCartContext();
+    const { wishlist , setWishlist } = useWishlistContext();
 
     return (
        

@@ -1,20 +1,18 @@
 import "./asidebar.css"
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState, useContext } from 'react';
-import { ProductPageContext } from "../../context/productPageContext";
+import { useProductPageContext } from "../../context/productPageContext";
 
 
 const AsideBar = () =>{
 
-    const { sort, setSort } = useContext(ProductPageContext);
-    const {  rating , setRating } = useContext(ProductPageContext);
-    const {  priceRange , setPriceRange } = useContext(ProductPageContext);
-    const { category , setCategory } = useContext(ProductPageContext);
+    const { sort, setSort,
+         rating , setRating,
+          priceRange , setPriceRange,
+           category , setCategory} = useProductPageContext();
 
     const [key, setKey] = useState(0);
 
-    
-    
     console.log(rating);
     console.log(priceRange);
     console.log(category);

@@ -1,15 +1,15 @@
 import { Navigation } from "../../components/navigation/Navigation";
 import "./wishlistPage.css"
-import { useContext, useEffect } from "react";
-import { WishlistContext } from "../../context/wishListContext";
-import { CartContext } from "../../context/cartContext";
+import { useEffect } from "react";
+import { useWishlistContext } from "../../context/wishListContext";
+import { useCartContext } from "../../context/cartContext";
 import axios from "axios";
 import { CardVertical } from "../../components/card/CardVertical";
 
 const WishlistPage = () => {
 
-        const { wishlist, setWishlist , removeFromWishlist} = useContext(WishlistContext);
-        const { cart, setCart, addToCart } = useContext(CartContext);
+        const { wishlist, setWishlist , removeFromWishlist} = useWishlistContext();
+        const { cart, setCart, addToCart } = useCartContext();
 
 
         useEffect(()=>{
@@ -27,15 +27,12 @@ const WishlistPage = () => {
     
         console.log("my wishlist has",wishlist);
 
-
-
     return(
         <>
         <Navigation/>
-
         <section className="wishlist-section">
         <div className="wishlist-container">
-                    <h1 className="wishlist-title">My <span style={{color: "green"}}> Wish </span> List({wishlist.length}) </h1>
+                    <h1 className="wishlist-title">My <span className="green"> Wish </span> List({wishlist.length}) </h1>
             
             <div className="wishlist-items">
                 <div className="wishlist-header">

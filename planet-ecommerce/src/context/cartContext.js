@@ -1,8 +1,9 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useContext } from 'react';
 import axios from 'axios';
 
 
 const CartContext = createContext();
+const useCartContext = () => useContext(CartContext);
 
 const CartProvider = ({children}) => {
 
@@ -67,4 +68,4 @@ const CartProvider = ({children}) => {
     );
 }
 
-export { CartContext, CartProvider };
+export { useCartContext, CartProvider };

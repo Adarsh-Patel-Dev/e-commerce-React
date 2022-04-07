@@ -1,78 +1,26 @@
 import "./productlisting.css"
-import { CardVertical } from "../../components/card/CardVertical";
-import { Navigation } from "../../components/navigation/Navigation";
+import { CardVertical , AsideBar , Navigation } from "../../components/";
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { AsideBar } from "../../components/asidebar/AsideBar";
-import { ProductPageContext } from "../../context/productPageContext";
-import { CartContext } from "../../context/cartContext";
-import { WishlistContext } from "../../context/wishListContext";
+import { useProductPageContext, useCartContext, useWishlistContext } from "../../context/";
+
 
 const ProductListing = () =>{
 
     // const [ productListing, setProductListing ] = useState([]);
    
-    const { productListing, setProductListing } = useContext(ProductPageContext);
-   const {cart,setCart, addToCart} = useContext(CartContext);
-   const { setWishlist, addToWishlist } = useContext(WishlistContext);
+    const { productListing, setProductListing, sort, rating, priceRange, category } = useProductPageContext();
+   const {cart,setCart, addToCart} = useCartContext();
+   const { setWishlist, addToWishlist } = useWishlistContext();
 
-    // useEffect(() => {  
-    // (async ()=>{
-    //     const response = await axios.get('/api/products');
-    //    if(response.status === 200){
-    //        setProductListing(response.data.products);
-    //    }
-    // })();
-    // }, [])
-
-    // async function addToWishlist(product){
-    // const res=await axios.post('/api/auth/login',{
-    //     "email": "adarshbalika@gmail.com",
-    //        "password": "adarshbalika"
-    //    })
-    //                 console.log("this is auth",res)
-    // }
-    // addToWishlist();
-
-//    async function addToCart(product ){
-//       const response = await axios({
-//           method: 'post',
-//           url: '/api/user/cart',
-//           headers: { authorization: localStorage.getItem('token') },
-          
-//           product: product
-//       });
-//         console.log(response.data.cart);
-//         setCart(response.data.cart);
-        
-//     }
-
-// const [state, dispatch] = useReducer(CartReducer, itemsInCart);
-// const addToCart = async (item) => {
-//   try {
-//     const response = await axios.post(
-//       "/api/user/cart",
-//       { product: item },
-//       {
-//         headers: {
-//           authorization: localStorage.getItem("token"),
-//         },
-//       }
-//     );
-//     if (response.status === 201) {
-//       setCart(response.data.cart);
-//     //   setAlertContent({_id: uuid(), isShow:true, type:'SUCCESS', content:"Product Added to cart"})
-//     }
-//   } catch (err) {
-//     console.log("err in add to cart:",err);
-//     // setAlertContent({_id: uuid(), isShow:true, type:'ERROR', content:"Kindly do login.."})
-//   }
-// };
-
-
-
-    const { sort, rating, priceRange, category } = useContext(ProductPageContext);
-    
+    useEffect(() => {  
+    (async ()=>{
+        const response = await axios.get('/api/products');
+       if(response.status === 200){
+           setProductListing(response.data.products);
+       }
+    })();
+    }, [])    
 
     const sortFunction = (productListing, sort) =>{
         const sortedProductListing = [...productListing];
@@ -138,7 +86,7 @@ const ProductListing = () =>{
         <section class="body-section">
             <AsideBar/>
           <section class="main-section">
-            <h2 class="main-section-title">Results: <span style={{color: "green"}}>({finalCategoryData.length})</span>
+            <h2 class="main-section-title">Results: <span className="green">({finalCategoryData.length})</span>
             </h2>
             <div class="main-section-card">
 
