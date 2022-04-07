@@ -71,8 +71,12 @@
 
 .card--qty-input{
     padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: inherit;
-    width: 4rem;
+    font-weight: 600;
+    width: 3rem;
     height: 2rem;
     border-radius: 5px;
     border: 1px solid var(--GRAY-50);

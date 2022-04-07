@@ -10,18 +10,20 @@ import { WishlistContext } from "../../context/wishListContext";
 
 const ProductListing = () =>{
 
-    const [ productListing, setProductListing ] = useState([]);
+    // const [ productListing, setProductListing ] = useState([]);
+   
+    const { productListing, setProductListing } = useContext(ProductPageContext);
    const {cart,setCart, addToCart} = useContext(CartContext);
    const { setWishlist, addToWishlist } = useContext(WishlistContext);
 
-    useEffect(() => {  
-    (async ()=>{
-        const response = await axios.get('/api/products');
-       if(response.status === 200){
-           setProductListing(response.data.products);
-       }
-    })();
-    }, [])
+    // useEffect(() => {  
+    // (async ()=>{
+    //     const response = await axios.get('/api/products');
+    //    if(response.status === 200){
+    //        setProductListing(response.data.products);
+    //    }
+    // })();
+    // }, [])
 
     // async function addToWishlist(product){
     // const res=await axios.post('/api/auth/login',{

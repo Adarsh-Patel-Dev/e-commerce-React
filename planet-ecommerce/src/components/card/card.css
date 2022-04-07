@@ -127,6 +127,7 @@
 .card--description{
     font-size: 1.0rem !important;
     font-weight: 400 !important;
+    width: 90% !important;
     color: var(--GRAY-80);
 }
 

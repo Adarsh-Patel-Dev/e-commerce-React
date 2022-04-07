@@ -16,9 +16,11 @@ const Navigation = () => {
        
         <nav className="nav-bar">
         <div className="nav--body">
+            <NavLink to='/'>
             <div className="nav--header">
             <h2 class="nav--title">Plan<span style={{color: "white"}}>e</span>t</h2>
             </div>
+            </NavLink>
             <div className="nav--search">
                 <input type="text" placeholder="Search here" className="nav--search--input" />
                 <button className="nav--search--btn">
