@@ -21,7 +21,7 @@
     z-index: -1;
 }
 
-.signup-page {
+.login-page {
     z-index: 15;
     display: flex;
     align-items: center;
@@ -29,7 +29,7 @@
     flex-direction: column;
     position: absolute;
     width: 35rem;
-    height: 45rem;
+    height: 45rem ;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);

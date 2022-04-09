@@ -33,7 +33,7 @@ body{
     align-items: baseline;
     font-weight: 500;
     font-size: 2rem;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
 }
 
 .nav--title {
@@ -43,7 +43,7 @@ body{
     letter-spacing: 0.2rem;
     font-weight: 500;
     font-size: 3rem;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     color: var(--LIGHT-GREEN);
 }
 
@@ -52,8 +52,8 @@ body{
     gap: 2rem;
     align-items: center;
     justify-content: center;
-    width: 50%;
-    padding: 1rem;
+    width: 3rem;
+    /* padding: 1rem; */
 }
 
 
@@ -122,13 +122,14 @@ body{
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
+    gap: 2rem;
     width: auto;
     list-style: none;
 
 }
 
 .nav--item {
-    padding: 1.5rem;
+    padding: 0rem;
 }
 
 .badge--number {
