@@ -1,8 +1,10 @@
 import { CardHorizontal, Navigation } from "../../components/";
+import { FaShoppingCart } from "react-icons/fa";
 import "./cartPage.css";
 import { useWishlistContext , useCartContext } from "../../context"
 import { useContext, useEffect } from "react";
 import axios  from "axios";
+import CartPrice from "../../components/CartPrice/CartPrice";
 
 const CartPage = () => {
 
@@ -29,17 +31,18 @@ const CartPage = () => {
     console.log("my cart has",cart);
 
     const price = cart.reduce(
-        (acc, item) => acc + Number(item.qty) * Number(item.originalPrice),
+        (acc, item) => acc + Number(item.qty) * Number(item.price.original),
         0
       );
       const discountPrice = cart.reduce(
         (acc, item) =>
-          acc + (Number(item.originalPrice) - Number(item.discountPrice)),
+          acc + (Number(item.price.original) - Number(item.price.discounted)),
         0
       );
 
-      const totalPrice = price - discountPrice;
-
+      const totalPrice = price - discountPrice + 199;
+      
+      const qty = cart.reduce((acc,item)=> acc + Number(item.qty),0);
 
 
     return(
@@ -63,30 +66,7 @@ const CartPage = () => {
 
         </div> 
 
-        <div class="price-component">
-            <h2 class="price-component-heading">CART DETAILS</h2>
-            <hr/>
-            <div class="price-table">
-                <div> Price(2 items) </div>
-                <div> {'\u20B9'} 1999 </div>
-            </div>
-            <div class="price-table">
-                <div> Discount </div>
-                <div> {'\u20B9'} 599 </div>
-            </div>
-            <div class="price-table">
-                <div> Delivery Charges </div>
-                <div> {'\u20B9'} 199 </div>
-            </div>
-            <hr/>
-            <div class="price-table bold">
-                <div> TOTAL AMOUNT </div>
-                <div> {'\u20B9'} 3999 </div>
-            </div>
-            <hr/>
-            <p class="price-component-para">You will save &#8377 500 on this order </p>
-            <button class="btn btn--primary order-btn">Proceed to Checkout</button>
-        </div>
+        { cart.length === 0 ? <h3 class="cart-heading-empty">Your cart is empty. Please add items in your <FaShoppingCart className="green"/></h3> : <CartPrice qty={qty} price={price} discountPrice={discountPrice} totalPrice={totalPrice}/>}
     </section>
 
         </>

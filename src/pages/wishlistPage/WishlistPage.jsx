@@ -1,10 +1,13 @@
 import { Navigation } from "../../components/navigation/Navigation";
+import { FaRegHeart } from "react-icons/fa";
+
 import "./wishlistPage.css"
 import { useEffect } from "react";
 import { useWishlistContext } from "../../context/wishListContext";
 import { useCartContext } from "../../context/cartContext";
 import axios from "axios";
 import { CardVertical } from "../../components/card/CardVertical";
+import { OpenWithSharp } from "@mui/icons-material";
 
 const WishlistPage = () => {
 
@@ -37,7 +40,7 @@ const WishlistPage = () => {
             <div className="wishlist-items">
                 <div className="wishlist-header">
                 </div>
-                {
+                { wishlist.length === 0 ? <h2 className="wishlist-empty">Your wishlist is empty. Please add Items in your <FaRegHeart className="green"/></h2> :
                     wishlist.map(item=>(<CardVertical key={item._id}
                     product={item}
                     addToCart={()=>addToCart(item,setCart)}
