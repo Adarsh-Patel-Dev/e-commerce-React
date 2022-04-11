@@ -1,4 +1,6 @@
 import { Navigation } from "../../components/navigation/Navigation";
+import { FaRegHeart } from "react-icons/fa";
+
 import "./wishlistPage.css"
 import { useEffect } from "react";
 import { useWishlistContext } from "../../context/wishListContext";
@@ -8,11 +10,10 @@ import { CardVertical } from "../../components/card/CardVertical";
 
 const WishlistPage = () => {
 
-        const { wishlist, setWishlist , removeFromWishlist} = useWishlistContext();
-        const { cart, setCart, addToCart } = useCartContext();
+        const { dispatch, addToCart, wishlist  } = useCartContext();
+        const { removeFromWishlist } = useWishlistContext();
 
-
-        useEffect(()=>{
+       useEffect(()=>{
             (async ()=>{
                 const response = axios({
           method: "get",
@@ -20,7 +21,7 @@ const WishlistPage = () => {
           headers: { authorization: localStorage.getItem('token') },
         });
                 if(response.status === 200){
-                    setWishlist(response.data.wishlist);
+                    dispatch({type:"WISHLIST", payload:response.data.wishlist});
                 }
             })();
         },[]);
@@ -37,11 +38,11 @@ const WishlistPage = () => {
             <div className="wishlist-items">
                 <div className="wishlist-header">
                 </div>
-                {
+                { wishlist.length === 0 ? <h2 className="wishlist-empty">Your wishlist is empty. Please add Items in your <FaRegHeart className="green"/></h2> :
                     wishlist.map(item=>(<CardVertical key={item._id}
                     product={item}
-                    addToCart={()=>addToCart(item,setCart)}
-                    addToWishlist={()=>removeFromWishlist(item._id,setWishlist)}
+                    addToCart={()=>addToCart(item,dispatch)}
+                    addToWishlist={()=>removeFromWishlist(item._id,dispatch)}
                     />))
                 }
                     

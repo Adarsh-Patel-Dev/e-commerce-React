@@ -1,23 +1,22 @@
 import "./productlisting.css"
 import { CardVertical , AsideBar , Navigation } from "../../components/";
-import { useEffect, useState, useContext } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { useProductPageContext, useCartContext, useWishlistContext } from "../../context/";
 
 
 const ProductListing = () =>{
 
-    // const [ productListing, setProductListing ] = useState([]);
-   
-    const { productListing, setProductListing, sort, rating, priceRange, category } = useProductPageContext();
-   const {cart,setCart, addToCart} = useCartContext();
-   const { setWishlist, addToWishlist } = useWishlistContext();
+    const {productDispatch,  productListing, sort, rating, priceRange, category } = useProductPageContext();
+
+   const { dispatch, addToCart} = useCartContext();
+   const {  addToWishlist } = useWishlistContext();
 
     useEffect(() => {  
     (async ()=>{
         const response = await axios.get('/api/products');
        if(response.status === 200){
-           setProductListing(response.data.products);
+           productDispatch({type:"PRODUCTS", payload:response.data.products});
        }
     })();
     }, [])    
@@ -58,9 +57,51 @@ const ProductListing = () =>{
     const categoryFunction = (productListing, category) =>{
 
         const sortedProductListing = [...productListing];
-        if(category.allPlants){
-            return sortedProductListing;
-        } if(category.airPurifyingPlants) {
+        if(category.airPurifyingPlants && category.floweringPlants && category.indoorPlants && category.herbPlants) {
+            return sortedProductListing
+        }
+
+        if(category.airPurifyingPlants && category.floweringPlants && category.indoorPlants) {
+            return sortedProductListing.filter(product => product.categoryName !== "HerbPlants" );
+        }
+
+        if(category.airPurifyingPlants && category.floweringPlants && category.herbPlants) {
+            return sortedProductListing.filter(product => product.categoryName !== "IndoorPlants" );
+        }
+       
+        if(category.airPurifyingPlants && category.herbPlants && category.indoorPlants) {
+            return sortedProductListing.filter(product => product.categoryName !== "FloweringPlants" );
+        }
+      
+        if(category.floweringPlants && category.herbPlants && category.indoorPlants) {
+            return sortedProductListing.filter(product => product.categoryName !== "AirPurifyingPlants" );
+        }
+        
+        if(category.airPurifyingPlants && category.floweringPlants) {
+            return sortedProductListing.filter(product => product.categoryName === "AirPurifyingPlants" || product.categoryName === "FloweringPlants");
+        }
+        
+        if(category.indoorPlants && category.herbPlants) {
+            return sortedProductListing.filter(product => product.categoryName === "IndoorPlants" || product.categoryName === "HerbPlants");
+        }
+        
+        if(category.airPurifyingPlants && category.indoorPlants) {
+            return sortedProductListing.filter(product => product.categoryName === "AirPurifyingPlants" || product.categoryName === "IndoorPlants");
+        }
+        
+        if(category.airPurifyingPlants && category.herbPlants) {
+            return sortedProductListing.filter(product => product.categoryName === "AirPurifyingPlants" || product.categoryName === "HerbPlants");
+        }
+        
+        if(category.floweringPlants && category.indoorPlants) {
+            return sortedProductListing.filter(product => product.categoryName === "FloweringPlants" || product.categoryName === "IndoorPlants");
+        }
+        
+        if(category.herbPlants && category.floweringPlants) {
+            return sortedProductListing.filter(product => product.categoryName === "HerbPlants" || product.categoryName === "FloweringPlants");
+        }
+        
+        if(category.airPurifyingPlants){
             return sortedProductListing.filter(product => product.categoryName === "AirPurifyingPlants");
         }
         if(category.floweringPlants){
@@ -92,8 +133,8 @@ const ProductListing = () =>{
 
               {finalCategoryData.map(product => (<CardVertical key={product._id} 
               product={product}
-              addToCart={()=>addToCart(product, setCart)}
-              addToWishlist={()=>addToWishlist(product,setWishlist)}
+              addToCart={()=>addToCart(product, dispatch)}
+              addToWishlist={()=>addToWishlist(product,dispatch)}
               />))}
 
             </div>

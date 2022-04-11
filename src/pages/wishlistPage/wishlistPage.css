@@ -12,6 +12,17 @@
     margin: auto;
 }
 
+.wishlist-empty{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    padding: 3rem 0;
+    font-size: 2rem;
+    font-weight: 550;
+    color: var(--GRAY-50);
+}
+
 .card--body{
     padding: 0.5rem;
     margin-right: 1rem;

@@ -28,7 +28,7 @@
     flex-direction: column;
     position: absolute;
     width: 35rem;
-    height: 45rem;
+    height: auto !important;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -59,9 +59,14 @@
     width: 30rem;
     background: var(--WHITE);
 
-    border: 1px solid VAR(--LIGHT-GREEN);;
+    border: 1px solid VAR(--LIGHT-GREEN);
     box-sizing: border-box;
     border-radius: 100px;
+}
+
+.signup-input:focus{
+    border: 1px solid VAR(--BLUE-80);
+
 }
 
 .checkbox-signup {

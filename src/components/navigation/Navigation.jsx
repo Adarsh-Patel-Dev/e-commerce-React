@@ -2,15 +2,15 @@
 import "./navigation.css";
 
 import { FaSearch, FaRegHeart, FaShoppingCart } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useCartContext } from "../../context/cartContext";
 import {  useEffect } from "react";
 import { useWishlistContext } from "../../context/wishListContext";
 
 const Navigation = () => {
 
-    const { cart, setCart } = useCartContext();
-    const { wishlist , setWishlist } = useWishlistContext();
+    const { state, setCart } = useCartContext();
+    const { cart, wishlist } = state;
 
     return (
        
@@ -45,11 +45,8 @@ const Navigation = () => {
                         </NavLink>
                     </li>
                     <li className="nav--item">
-                        <a href="#" className="nav--link link-btn btn-solid">LogIn</a>
+                        <Link to='/login' className="nav--link link-btn btn-solid">LogIn</Link>
                     </li> 
-                    <li className="nav--item">
-                        <a href="/logout/logout.html" className="nav--link link-btn">Log Out</a>
-                    </li>
                 </ul>
             </div>
         </div>
