@@ -11,7 +11,6 @@ const Navigation = () => {
 
     const { state, setCart } = useCartContext();
     const { cart, wishlist } = state;
-    // const { wishlist , setWishlist } = useWishlistContext();
 
     return (
        
@@ -48,9 +47,6 @@ const Navigation = () => {
                     <li className="nav--item">
                         <Link to='/login' className="nav--link link-btn btn-solid">LogIn</Link>
                     </li> 
-                    {/* <li className="nav--item">
-                        <a href="/logout/logout.html" className="nav--link link-btn">Log Out</a>
-                    </li> */}
                 </ul>
             </div>
         </div>

@@ -33,7 +33,6 @@ const CardVertical = ({product, addToWishlist, addToCart}) =>{
                         <h5 className="discount">{discount}% off</h5>
 
                     </div>
-                    {/* <div className="card--delivery--msg">FREE delivery on orders over {'\u20B9'} 499 </div> */}
                 </div>
 
                 <div className="card--buttons">

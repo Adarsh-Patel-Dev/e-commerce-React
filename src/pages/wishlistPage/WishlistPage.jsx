@@ -10,7 +10,7 @@ import { CardVertical } from "../../components/card/CardVertical";
 
 const WishlistPage = () => {
 
-        const { cart, dispatch, addToCart, wishlist  } = useCartContext();
+        const { dispatch, addToCart, wishlist  } = useCartContext();
         const { removeFromWishlist } = useWishlistContext();
 
        useEffect(()=>{

@@ -8,11 +8,9 @@ import CartPrice from "../../components/CartPrice/CartPrice";
 
 const CartPage = () => {
 
-    const { state, dispatch, addToCart, removeFromCart , incrementCart, decrementCart} = useCartContext();
+    const { state, dispatch, removeFromCart } = useCartContext();
     const { cart } = state;
-    const { wishlist, setWishlist, addToWishlist } = useWishlistContext();
-
-    
+    const {  addToWishlist } = useWishlistContext();
 
     useEffect(() => {
        (async ()=>{
@@ -22,14 +20,11 @@ const CartPage = () => {
                headers: { authorization: localStorage.getItem('token') },
            });
            if(response.status === 200){
-               console.log("cartttttt",response.data.cart);
                setCart(response.data.cart);
            }
        })();
     }, []);
     
-    console.log("my cart has",cart);
-
     const price = cart.reduce(
         (acc, item) => acc + Number(item.qty) * Number(item.price.original),
         0
