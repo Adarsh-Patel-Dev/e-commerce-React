@@ -13,10 +13,10 @@ const Logout = () => {
             <h2 className="signup-title">Log Out</h2>
             <span className="signup-span">You are Logged Out </span>
             <Link to ="/login">
-            <button href="#" className="btn-login">Login</button>
+            <button className="btn-login">Login</button>
             </Link>
             <Link to ="/signup">
-            <button href="#" className="btn-login outline">Signup</button>
+            <button className="btn-login outline">Signup</button>
             </Link>
         </div>
     </div>

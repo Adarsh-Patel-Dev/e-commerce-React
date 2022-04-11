@@ -3,18 +3,24 @@
     background-color: var(--GRAY-10) ;
     justify-content: center;
     gap: 2.5rem;
-    align-items: self-start;
+    align-items: flex-start;
     
+}
+
+.cart-container{
+    padding: 0 0rem;
+    overflow-y: auto;
+    overflow-x: clip;
+    height: calc(100vh - 6.24rem);
 }
 
 .card-component{
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    overflow-y: hidden;
     /* height: 95vh; */
     margin-top: 3rem;
-    padding: 3rem;
+    padding: 0rem;
     width: 50rem;
 }
 
@@ -41,9 +47,9 @@
 
 .price-component{
     border-radius: 5px;
-    padding: 5rem;
+    padding: 3rem;
     width: 40rem;
-    height: 50rem;
+    height: 40rem;
     box-shadow: 0px 0px 15px var(--BOX-SHADOW);
 }
 

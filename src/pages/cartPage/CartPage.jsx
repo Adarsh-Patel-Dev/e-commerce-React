@@ -8,8 +8,8 @@ import CartPrice from "../../components/CartPrice/CartPrice";
 
 const CartPage = () => {
 
-    const { cart, setCart, addToCart, removeFromCart , incrementCart, decrementCart} = useCartContext();
-
+    const { state, dispatch, addToCart, removeFromCart , incrementCart, decrementCart} = useCartContext();
+    const { cart } = state;
     const { wishlist, setWishlist, addToWishlist } = useWishlistContext();
 
     
@@ -26,7 +26,7 @@ const CartPage = () => {
                setCart(response.data.cart);
            }
        })();
-    }, [cart]);
+    }, []);
     
     console.log("my cart has",cart);
 
@@ -52,21 +52,19 @@ const CartPage = () => {
             <h3 class="cart-heading">My <span className="green">Cart({cart.length})</span></h3>
         <section class="cart-section">
 
+        <div class="cart-container">
         <div class="card-component">
 
-            
-
             { cart.map(item=>(<CardHorizontal key={item._id} 
-
             product={item} 
-
-             removeFromCart={()=>removeFromCart(item._id, setCart)}
-            addToWishlist={()=>addToWishlist(item,setWishlist)}     
+            removeFromCart={()=>removeFromCart(item._id, dispatch)}
+            addToWishlist={()=>addToWishlist(item,dispatch)}     
             />))}
 
         </div> 
+        </div>
 
-        { cart.length === 0 ? <h3 class="cart-heading-empty">Your cart is empty. Please add items in your <FaShoppingCart className="green"/></h3> : <CartPrice qty={qty} price={price} discountPrice={discountPrice} totalPrice={totalPrice}/>}
+        { cart.length === 0 ? <h3 className="cart-heading-empty">Your cart is empty. Please add items in your <FaShoppingCart className="green"/></h3> : <CartPrice qty={qty} price={price} discountPrice={discountPrice} totalPrice={totalPrice}/>}
     </section>
 
         </>

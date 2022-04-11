@@ -71,7 +71,7 @@
 }
 
 .order-btn{
-    background-color: var(--BLUE-80) !important;
+    background-color: var(--BLUE-80) ;
     margin-top: 5rem; 
     padding: 1rem;
     font-size: 1.5rem;

@@ -1,16 +1,17 @@
 import { useContext, createContext   } from "react";
-import { useState } from "react"; 
 import axios from "axios";
+import { useCartContext } from "./cartContext";
 
 const WishlistContext = createContext();
 const useWishlistContext = () => useContext(WishlistContext);
 
 
 const WishlistProvider = (props) => {
-    const [wishlist, setWishlist] = useState([]);
 
+    const { state, dispatch} = useCartContext();
+    const { wishlist , cart} = state;
 
-    async function removeFromWishlist(productId, setWishlist){
+    async function removeFromWishlist(productId, payload){
         const response = await axios({
             method: 'delete',
             url: `/api/user/wishlist/${productId}`,
@@ -18,10 +19,13 @@ const WishlistProvider = (props) => {
                 authorization: localStorage.getItem("token"),
             },
         })
-        setWishlist(response.data.wishlist);
+        dispatch({ type: "WISHLIST", payload:response.data.wishlist});
     }
 
-    async function addToWishlist(product, setWishlist){
+    async function addToWishlist(product, payload){
+        if(wishlist.find((element) => element._id === product._id )){
+            return console.log("already in wishlist")
+        }
         const response = await axios({
             method: 'post',
             url: '/api/user/wishlist',
@@ -30,15 +34,15 @@ const WishlistProvider = (props) => {
                 product: product
             }
         });
-          console.log(response.data.wishlist);
-          setWishlist(response.data.wishlist);
+
+        if(response.status === 201){
+            dispatch({type:"WISHLIST", payload:response.data.wishlist});
+        }
           
      }
 
-     
-   
     return (
-        <WishlistContext.Provider value={{ wishlist, setWishlist, removeFromWishlist, addToWishlist }}>
+        <WishlistContext.Provider value={{ removeFromWishlist, addToWishlist }}>
         {props.children}
         </WishlistContext.Provider>
     )

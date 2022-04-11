@@ -12,8 +12,9 @@ const LandingPage = () => {
 
     const { category, setCategory } = useCategoryContext();
 
-    const { productListing, setProductListing } = useProductPageContext();
-    const {cart,setCart, addToCart} = useCartContext();
+    const { productListing, productDispatch } = useProductPageContext();
+    const { state, dispatch} = useCartContext();
+    const { cart } = state;
     const { setWishlist, addToWishlist } = useWishlistContext();
 
     console.log("this is products", productListing);    
@@ -25,7 +26,7 @@ const LandingPage = () => {
         (async ()=>{
             const response = await axios.get('/api/products');
            if(response.status === 200){
-               setProductListing(response.data.products);
+            productDispatch({type:"PRODUCTS",payload:response.data.products});
            }
         })();
         }, [])
@@ -72,8 +73,8 @@ const LandingPage = () => {
                 productListing.filter(item=>item.rating>4.4).map(product => (
                     <CardVertical key={product._id} 
                     product={product} 
-                    addToCart={()=>addToCart(product, setCart)} 
-                    addToWishlist={()=>addToWishlist(product, setWishlist)}/>
+                    addToCart={()=>addToCart(product, dispatch)} 
+                    addToWishlist={()=>addToWishlist(product, dispatch)}/>
                 ))
             }
         </div>

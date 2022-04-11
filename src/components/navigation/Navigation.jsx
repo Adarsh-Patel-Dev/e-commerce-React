@@ -9,8 +9,9 @@ import { useWishlistContext } from "../../context/wishListContext";
 
 const Navigation = () => {
 
-    const { cart, setCart } = useCartContext();
-    const { wishlist , setWishlist } = useWishlistContext();
+    const { state, setCart } = useCartContext();
+    const { cart, wishlist } = state;
+    // const { wishlist , setWishlist } = useWishlistContext();
 
     return (
        

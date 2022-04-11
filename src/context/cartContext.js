@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import axios from 'axios';
 
 
@@ -7,18 +7,39 @@ const useCartContext = () => useContext(CartContext);
 
 const CartProvider = ({children}) => {
 
-    const [cart, setCart] = useState([]);
-    const [total, setTotal] = useState(0);
+    function reducerFunc(state,action){
+      switch ( action.type) {
+        case "CART":
+          return {...state, cart:action.payload}
+          case "WISHLIST":
+            return { ...state, wishlist:action.payload}
+        default:
+          break;
+      }
+    }
 
+    const [ state, dispatch] = useReducer(reducerFunc,{  
+      cart:[],
+      wishlist:[],
+    })
 
-    async function addToCart (item, setCart){
+    const { cart, wishlist } = state;
+
+    async function addToCart (item, dispatch){
+      if( (cart.find((element) => element._id === item._id))) {
+        return console.log('already present in cart');
+      }
       const response = await axios({
           method: 'post',
           url: '/api/user/cart',
           headers: { authorization: localStorage.getItem('token') },
           data: { product: item }
       });
-      setCart(response.data.cart);
+     
+       if(response.status === 201) {
+         dispatch({type: 'CART', payload: response.data.cart});
+       }
+      
     }
 
     const changeCartQty = async (actionType, id) => {
@@ -39,7 +60,7 @@ const CartProvider = ({children}) => {
 
         if (response.status === 200) {
           console.log("increment/decrement qty:",response )
-          setCart(response.data.cart);
+          dispatch({type: "CART", payload: response.data.cart})
           // setAlertContent({_id: uuid(), isShow:true, type:'SUCCESS', content:"Product quantity updated in Cart"})
         }
       } catch (err) {
@@ -49,7 +70,7 @@ const CartProvider = ({children}) => {
     };
 
 
-    async function removeFromCart(productId, setCart){
+    async function removeFromCart(productId, dispatch){
       const response = await axios({
           method: "delete",
           url: `/api/user/cart/${productId}`,
@@ -57,12 +78,13 @@ const CartProvider = ({children}) => {
               authorization: localStorage.getItem('token'),
           },
         })
-        setCart(response.data.cart);
+        dispatch({type:"CART", payload:response.data.cart})
       };
 
-    
+   
     return(
-        <CartContext.Provider value={{ cart, setCart , total, setTotal , addToCart, removeFromCart, changeCartQty }}>
+        <CartContext.Provider value={{ state,
+        wishlist, dispatch , addToCart, removeFromCart, changeCartQty }}>
           {children} 
         </CartContext.Provider>
     );
