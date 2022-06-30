@@ -7,6 +7,7 @@ const useCategoryContext = () => useContext(CategoryContext);
 
 const CategoryProvider = ({children}) =>{
     const [category, setCategory] = useState([]);
+    const [ searchValue, setSearchValue ] = useState("")
 
     async function getAllCategory() {
         const response = await axios({
@@ -34,7 +35,7 @@ const CategoryProvider = ({children}) =>{
 
 
   return (
-    <CategoryContext.Provider value={{ category, setCategory, getAllCategory, getCategory}}>
+    <CategoryContext.Provider value={{ searchValue, setSearchValue, category, setCategory, getAllCategory, getCategory}}>
     {children}
     </CategoryContext.Provider>
   )

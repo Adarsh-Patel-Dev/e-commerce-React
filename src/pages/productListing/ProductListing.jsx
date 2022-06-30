@@ -2,7 +2,7 @@ import "./productlisting.css"
 import { CardVertical , AsideBar , Navigation } from "../../components/";
 import { useEffect } from 'react';
 import axios from 'axios';
-import { useProductPageContext, useCartContext, useWishlistContext } from "../../context/";
+import { useProductPageContext, useCartContext, useWishlistContext, useCategoryContext } from "../../context/";
 
 
 const ProductListing = () =>{
@@ -11,6 +11,8 @@ const ProductListing = () =>{
 
    const { dispatch, addToCart} = useCartContext();
    const {  addToWishlist } = useWishlistContext();
+  const { searchValue, setSearchValue } = useCategoryContext()
+
 
     useEffect(() => {  
     (async ()=>{
@@ -120,6 +122,12 @@ const ProductListing = () =>{
 
     const finalCategoryData = categoryFunction(finalData, category);
 
+    const searchResultData = finalCategoryData.filter(
+        (data) =>
+          data.title.toLowerCase().includes(searchValue) ||
+          data.desc.toLowerCase().includes(searchValue)
+      );
+
     
     return(
         <>
@@ -132,7 +140,7 @@ const ProductListing = () =>{
             <div>
             <div class="main-section-card">
 
-              {finalCategoryData.map(product => (<CardVertical key={product._id} 
+              {searchResultData.map(product => (<CardVertical key={product._id} 
               product={product}
               addToCart={()=>addToCart(product, dispatch)}
               addToWishlist={()=>addToWishlist(product,dispatch)}
