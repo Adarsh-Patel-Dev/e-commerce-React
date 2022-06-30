@@ -37,6 +37,7 @@ const Signup = () => {
             placeholder="First Name"
             required
           />
+        </div>
           <input
             onChange={(e) =>
               authDispatch({ type: "LAST_NAME", payload: e.target.value })
@@ -47,7 +48,6 @@ const Signup = () => {
             placeholder="Last Name"
             required
           />
-        </div>
         <input
           onChange={(e) =>
             authDispatch({ type: "EMAIL", payload: e.target.value })

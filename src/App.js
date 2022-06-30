@@ -2,6 +2,7 @@
 import { Auth } from "./components/Auth/Auth";
 import { CartPage } from "./pages/cartPage/CartPage";
 import { LandingPage } from "./pages/landingPage/LandingPage";
+import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import  MockMan  from 'mockman-js';
 // import { ToastContainer } from "react-toastify";
 import { WishlistPage } from "./pages/wishlistPage/WishlistPage";
@@ -44,6 +45,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="*" element={<ErrorPage />} />
 
       </Routes>
       <Footer/>
