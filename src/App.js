@@ -3,6 +3,7 @@ import { Navigation } from "./components/navigation/Navigation";
 import { CartPage } from "./pages/cartPage/CartPage";
 import { LandingPage } from "./pages/landingPage/LandingPage";
 import  MockMan  from 'mockman-js';
+// import { ToastContainer } from "react-toastify";
 import { WishlistPage } from "./pages/wishlistPage/WishlistPage";
 import { ProductListing } from "./pages/productListing/ProductListing";
 import { Signup } from "./pages/signupPage/Signup";
@@ -26,7 +27,7 @@ function App() {
 
       </Routes>
       
-      
+      {/* <ToastContainer position="top-right" /> */}
     </div>
   );
 }

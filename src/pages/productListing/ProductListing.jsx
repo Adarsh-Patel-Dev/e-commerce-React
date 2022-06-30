@@ -129,6 +129,7 @@ const ProductListing = () =>{
           <section class="main-section">
             <h2 class="main-section-title">Results: <span className="green">({finalCategoryData.length})</span>
             </h2>
+            <div>
             <div class="main-section-card">
 
               {finalCategoryData.map(product => (<CardVertical key={product._id} 
@@ -137,6 +138,7 @@ const ProductListing = () =>{
               addToWishlist={()=>addToWishlist(product,dispatch)}
               />))}
 
+            </div>
             </div>
         </section>
         </section>

@@ -46,7 +46,7 @@ const CardHorizontal = ({product, addToWishlist, removeFromCart }) => {
                                 <div className="card--item-qty">
                                     <div className="card--qty">
                                         <button className="btn-minus" 
-                                        // disabled={(counter>1)?false:true}
+                                        disabled={(product.qty>1)?false:true}
                                         onClick={()=>changeCartQty("decrement", product._id)}>-</button>
 
                                         <label type="text"  className="card--qty-input">{product.qty}</label>

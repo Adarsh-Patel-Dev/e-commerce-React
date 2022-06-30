@@ -14,7 +14,6 @@
 .main-section{
     /* background-color: rgba(189, 204, 189, 0.781); */
     width: 100%;
-    width: auto;
     overflow-y: auto;
     overflow-x: clip;
     height: calc(100vh - 6.24rem);
@@ -134,11 +133,12 @@
     font-weight: 550;
 }
 
-.main-section-card{
-   margin-top: 4rem;
-   display: flex;
-   flex-wrap: wrap;
-   gap: 4rem;
-   justify-content: center;
-   align-items: center;
+.main-section-card {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 4rem;
+    gap: 4rem;
+    justify-content: flex-start;
+    align-items: baseline;
 }

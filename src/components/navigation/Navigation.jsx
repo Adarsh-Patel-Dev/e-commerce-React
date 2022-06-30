@@ -1,9 +1,11 @@
 
 import "./navigation.css";
 
-import { FaSearch, FaRegHeart, FaShoppingCart } from "react-icons/fa";
+import { FaSearch, FaRegHeart, FaHeart, FaShoppingCart,  } from "react-icons/fa";
+import { MdOutlineShoppingCart, MdShoppingCart } from "react-icons/md";
 import { NavLink, Link } from "react-router-dom";
 import { useCartContext } from "../../context/cartContext";
+import Logo from "../../images/planet-logo.svg"
 import {  useEffect } from "react";
 import { useWishlistContext } from "../../context/wishListContext";
 
@@ -16,6 +18,9 @@ const Navigation = () => {
        
         <nav className="nav-bar">
         <div className="nav--body">
+                <span className="nav--logo">
+                    <img className="logo" src={Logo}/>
+                </span>
             <NavLink to='/'>
             <div className="nav--header">
             <h2 class="nav--title">Plan<span style={{color: "white"}}>e</span>t</h2>
@@ -23,9 +28,9 @@ const Navigation = () => {
             </NavLink>
             <div className="nav--search">
                 <input type="text" placeholder="Search here" className="nav--search--input" />
-                <button className="nav--search--btn">
+                {/* <button className="nav--search--btn">
                     <FaSearch /> 
-                </button>
+                </button> */}
             </div>
 
             <div className="nav--links">
