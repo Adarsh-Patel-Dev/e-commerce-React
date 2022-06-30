@@ -1,11 +1,17 @@
 import "./productlisting.css"
 import { CardVertical , AsideBar , Navigation } from "../../components/";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { TailSpin } from "react-loader-spinner";
 import { useProductPageContext, useCartContext, useWishlistContext, useCategoryContext } from "../../context/";
 
 
 const ProductListing = () =>{
+  const [ loading, setLoading ] = useState(true);
+
+  setTimeout(() => {
+    setLoading(false)
+  }, 2000);
 
     const {productDispatch,  productListing, sort, rating, priceRange, category } = useProductPageContext();
 
@@ -132,22 +138,45 @@ const ProductListing = () =>{
     return(
         <>
         <Navigation/>
+        
         <section class="body-section">
             <AsideBar/>
           <section class="main-section">
+            
+            {
+                loading ? (
+            <span className="spinner">
+              <TailSpin color="#76C310" height={80} width={80} />
+              <br />
+              <b>Loading...</b>
+            </span>
+          ):(
+            <div>
             <h2 class="main-section-title">Results: <span className="green">({finalCategoryData.length})</span>
             </h2>
             <div>
+            
             <div class="main-section-card">
-
-              {searchResultData.map(product => (<CardVertical key={product._id} 
+                
+              { searchResultData.length > 0 ? (
+                searchResultData.map(product => (<CardVertical key={product._id} 
               product={product}
               addToCart={()=>addToCart(product, dispatch)}
               addToWishlist={()=>addToWishlist(product,dispatch)}
-              />))}
+              />))):(
+                 <section className="error-section">
+                  <div className="error-text">
+                    <p className="error-details">
+                      Sorry we couldn't find any matching results for <b>{searchValue}</b>
+                    </p>
+                    <p className="error-details">Try different keywords.</p>
+                  </div>
+                </section>
+              )}
 
             </div>
             </div>
+            </div>)}
         </section>
         </section>
         </>

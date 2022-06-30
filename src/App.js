@@ -1,4 +1,5 @@
 // import "./App.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Auth } from "./components/Auth/Auth";
 import { CartPage } from "./pages/cartPage/CartPage";
 import { LandingPage } from "./pages/landingPage/LandingPage";
