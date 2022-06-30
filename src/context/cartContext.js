@@ -31,7 +31,6 @@ const CartProvider = ({children}) => {
 
     async function addToCart (item, dispatch){
       if( (cart.find((element) => element._id === item._id))) {
-        return console.log('already present in cart');
       }
       const response = await axios({
           method: 'post',
@@ -64,7 +63,6 @@ const CartProvider = ({children}) => {
         );
 
         if (response.status === 200) {
-          console.log("increment/decrement qty:",response )
           dispatch({type: "CART", payload: response.data.cart})
           // Toast({ type: "success", msg: "Product quantity updated in cart."});
         }

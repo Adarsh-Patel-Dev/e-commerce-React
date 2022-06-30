@@ -25,7 +25,7 @@ const ProductPageProvider = ({children}) => {
                 return { ...state, category: action.payload}
 
 
-            case "FLOWERINGPLANT":
+            case "FLOWERINGPLANTS":
                 return {
                     ...state,
                     category: {
@@ -34,7 +34,7 @@ const ProductPageProvider = ({children}) => {
                     }
                 }    
         
-            case "INDOORPLANT":
+            case "INDOORPLANTS":
                 return {
                     ...state,
                     category: {
@@ -43,7 +43,7 @@ const ProductPageProvider = ({children}) => {
                     }
                 }    
         
-            case "HERBPLANT":
+            case "HERBPLANTS":
                 return {
                     ...state,
                     category: {
@@ -52,7 +52,7 @@ const ProductPageProvider = ({children}) => {
                     }
                 }    
         
-            case "AIRPURIFYINGPLANT":
+            case "AIRPURIFYINGPLANTS":
                 return {
                     ...state,
                     category: {

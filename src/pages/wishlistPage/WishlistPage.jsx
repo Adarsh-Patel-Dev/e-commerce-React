@@ -25,8 +25,6 @@ const WishlistPage = () => {
     })();
   }, []);
 
-  console.log("my wishlist has", wishlist);
-
   return (
     <>
       <Navigation />

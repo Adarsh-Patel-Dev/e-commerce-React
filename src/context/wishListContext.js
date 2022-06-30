@@ -27,7 +27,6 @@ const WishlistProvider = (props) => {
 
     async function addToWishlist(product, payload){
         if(wishlist.find((element) => element._id === product._id )){
-            return console.log("already in wishlist")
         }
         const response = await axios({
             method: 'post',

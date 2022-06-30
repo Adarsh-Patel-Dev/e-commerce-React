@@ -15,9 +15,7 @@ const Navigation = () => {
   const location = useLocation();
   const { state, setCart, dispatch } = useCartContext();
   const { cart, wishlist } = state;
-  const { searchValue, setSearchValue } = useCategoryContext()
-
-  console.log("searchval", searchValue);
+  const { searchValue, setSearchValue, category } = useCategoryContext()
 
   const encodedToken = localStorage.getItem("token");
   useEffect(() => {
