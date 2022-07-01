@@ -1,6 +1,7 @@
 import { FaRegHeart, FaStar, FaHeart } from "react-icons/fa";
 import { useCartContext } from "../../context/cartContext";
-
+import { useWishlistContext } from "../../context/wishListContext";
+import { useNavigate } from "react-router-dom";
 import "./card.css";
 
 const CardVertical = ({ product, addToWishlist, addToCart }) => {
@@ -16,20 +17,27 @@ const CardVertical = ({ product, addToWishlist, addToCart }) => {
   } = product;
 
   const { state, dispatch } = useCartContext();
+  const { removeFromWishlist } = useWishlistContext();
   const { wishlist, cart } = state;
+  const navigate = useNavigate();
 
   console.log("from card wishlist", wishlist);
   console.log("from card cart is", cart);
 
   return (
     <div className="card">
-      <button onClick={addToWishlist} className="wishlist--badge">
-         {
-              wishlist.find((wishlistdata)=>wishlistdata._id === _id) ? <FaHeart style={{ color: "red", fontSize: "1.5rem" }} />
-              : <FaRegHeart style={{ color: "red", fontSize: "1.5rem" }} />
-            } 
-        {/* <FaRegHeart style={{ color: "red", fontSize: "1.5rem" }} /> */}
-      </button>
+      {wishlist.find((wishlistdata) => wishlistdata._id === _id) ? (
+        <button
+          onClick={() => removeFromWishlist(_id, dispatch)}
+          className="wishlist--badge"
+        >
+          <FaHeart style={{ color: "red", fontSize: "1.5rem" }} />
+        </button>
+      ) : (
+        <button onClick={addToWishlist} className="wishlist--badge">
+          <FaRegHeart style={{ color: "red", fontSize: "1.5rem" }} />
+        </button>
+      )}
       <div className="card--image">
         <img
           src={img}
@@ -60,11 +68,18 @@ const CardVertical = ({ product, addToWishlist, addToCart }) => {
         </div>
 
         <div className="card--buttons">
-          <button onClick={addToCart} className="btn btn--primary">
-            {cart.find((cartdata) => cartdata._id === _id)
-              ? "Added to Cart"
-              : "Add to cart"}
-          </button>
+          {cart.find((cartdata) => cartdata._id === _id) ? (
+            <button
+              onClick={() => navigate("/cart")}
+              className="btn btn--primary blue"
+            >
+              Go to Cart
+            </button>
+          ) : (
+            <button onClick={addToCart} className="btn btn--primary">
+              Add to cart
+            </button>
+          )}
         </div>
       </div>
     </div>
