@@ -24,6 +24,8 @@ const Navigation = () => {
     }
   }, [logout]);
 
+  
+
   return (
     <nav className="nav-bar">
       <div className="nav--body">
@@ -65,7 +67,7 @@ const Navigation = () => {
                 { wishlist.length>0 &&
                   <span className="badge--number">{wishlist.length}</span>
                   }
-                <FaRegHeart className="icons" />
+                <FaHeart className="icons" />
               </NavLink>
             </li>
 
