@@ -14,8 +14,6 @@ const CartProvider = ({children}) => {
           return {...state, cart:action.payload}
           case "WISHLIST":
             return { ...state, wishlist:action.payload}
-          case "SEARCH_VALUE":
-            return { ...state, searchValue:action.payload}
         default:
           break;
       }
@@ -24,12 +22,12 @@ const CartProvider = ({children}) => {
     const [ state, dispatch] = useReducer(reducerFunc,{  
       cart:[],
       wishlist:[],
-      searchValue:"abc",
     })
 
-    const { cart, wishlist, searchValue } = state;
+    const { cart, wishlist } = state;
 
     async function addToCart (item, dispatch){
+      console.log("Cart add")
       if( (cart.find((element) => element._id === item._id))) {
       }
       const response = await axios({
@@ -38,6 +36,7 @@ const CartProvider = ({children}) => {
           headers: { authorization: localStorage.getItem('token') },
           data: { product: item }
       });
+      console.log("Cart add2")
      
        if(response.status === 201) {
          dispatch({type: 'CART', payload: response.data.cart});

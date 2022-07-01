@@ -1,5 +1,5 @@
 import { CardHorizontal, Navigation } from "../../components/";
-import { FaShoppingCart, FaRegShoppingCart  } from "react-icons/fa";
+import { FaShoppingCart, FaRegShoppingCart } from "react-icons/fa";
 import "./cartPage.css";
 import { useWishlistContext, useCartContext } from "../../context";
 import { useContext, useEffect } from "react";
@@ -20,11 +20,12 @@ const CartPage = () => {
         headers: { authorization: localStorage.getItem("token") },
       });
       if (response.status === 200) {
-        setCart(response.data.cart);
+        console.log("reso", response.data.cart);
+        dispatch({ type: "CART", payload: response.data.cart });
       }
     })();
   }, []);
-
+  console.log("hello", cart);
   const price = cart.reduce(
     (acc, item) => acc + Number(item.qty) * Number(item.price.original),
     0
@@ -66,10 +67,10 @@ const CartPage = () => {
         {cart.length === 0 ? (
           <h3 className="cart-heading-empty">
             Your cart is empty. Please add items in your.
-           <FaShoppingCart className="green" />
-           <Link to="/products">
-           <button className="green btn btn--primary" >Add items</button>
-           </Link> 
+            <FaShoppingCart className="green" />
+            <Link to="/products">
+              <button className="green btn btn--primary">Add items</button>
+            </Link>
           </h3>
         ) : (
           <CartPrice

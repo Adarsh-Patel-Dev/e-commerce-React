@@ -19,6 +19,7 @@ const LandingPage = () => {
   const { state, dispatch } = useCartContext();
   const { cart } = state;
   const { setWishlist, addToWishlist } = useWishlistContext();
+  const { addToCart } = useCartContext()
 
   const { searchValue, setSearchValue, category } = useCategoryContext();
 
@@ -57,6 +58,7 @@ const LandingPage = () => {
         <div className="category">
           {category.map((category) => (
             <Category
+             key={category._id}
               categories={category.categoryName}
               func={() => {
                 let categoryUppercase = category.categoryName.toUpperCase();
@@ -76,9 +78,7 @@ const LandingPage = () => {
               }}
             />
           ))}
-          <Category categories="Indoor Plants" />
-          <Category categories="Flowering Plants" />
-          <Category categories="Herb Plants" />
+         
         </div>
       </section>
 

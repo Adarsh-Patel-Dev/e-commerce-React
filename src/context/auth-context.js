@@ -61,21 +61,21 @@ const AuthProvider = ({ children }) => {
         navigate(location?.state?.from?.pathname, { replace: true})
         Toast({ type: "sucess", msg: `Welcome ${response.data.createdUser.someUserAttribute1}` });
         setUserName(response.data.createdUser.someUserAttribute1)
+      } else{
+          console.log("Wrong Email format!!!")
+          // Toast({ type: "error", msg: "Wrong Email format!!!" });
       }
-    } else{
-        console.log("Wrong Email format!!!")
-        Toast({ type: "error", msg: "Wrong Email format!!!" });
-    }
+      }
     } catch (error) {
       console.error(error);
-      Toast({ type: "error", msg: error });
+      // Toast({ type: "error", msg: error });
     }
   }
 
   async function login(email, password, navigate, location, encodedToken) {
     try {
         if(encodedToken){
-            Toast({ type: "info", msg: `Hey ${response.data.createdUser.someUserAttribute1}, you're already Logged IN 😎`  });            
+            // Toast({ type: "info", msg: `Hey ${response.data.createdUser.someUserAttribute1}, you're already Logged IN 😎`  });            
         }
       const response = await axios({
         method: "POST",
@@ -88,11 +88,11 @@ const AuthProvider = ({ children }) => {
       if (response.status === 200) {
         localStorage.setItem("token",response.data.encodedToken);
         navigate(location?.state?.from?.pathname, { replace: true})
-        Toast({ type: "success", msg: "Log In successful" });
+        // Toast({ type: "success", msg: "Log In successful" });
       }
     } catch (error) {
       console.log(error);
-      Toast({ type: "error", msg: error });
+      // Toast({ type: "error", msg: error });
     }
   }
 
