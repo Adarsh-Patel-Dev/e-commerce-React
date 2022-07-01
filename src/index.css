@@ -18,3 +18,7 @@ button{
   left: 56%;
   transform: translate(-50%, -50%);
 }
+
+img{
+  object-fit: cover;
+}

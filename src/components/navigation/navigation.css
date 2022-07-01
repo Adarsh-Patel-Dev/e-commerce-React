@@ -26,7 +26,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .nav--logo{
@@ -142,25 +142,25 @@ body{
 }
 
 .nav--item {
-    padding: 0rem;
+    padding: 0 1rem;
 }
 
 .badge--number {
     position: relative;
     aspect-ratio: 1;
-    left: 3.3rem;
+    left: 3.8rem;
     top: -1.8rem;
-    font-size: 5px;
+    font-size: 15px;
     font-weight: 600;
     border-radius: 30px;
     background-color: var(--LIGHT-GREEN);
     color: var(--BLACK-100);
-    padding: 1px 5px;
+    padding: 1px 7px;
     border: 2px solid var(--WHITE);
 }
 
 .icons {
-    font-size: 2.3rem;
+    font-size: 2.6rem;
     color: var(--WHITE);
 }
 

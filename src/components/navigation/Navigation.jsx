@@ -62,14 +62,18 @@ const Navigation = () => {
           <ul className="nav--list">
             <li className="nav--item">
               <NavLink to="/wishlist" className="nav--link">
-                <span className="badge--number">{wishlist.length}</span>
+                { wishlist.length>0 &&
+                  <span className="badge--number">{wishlist.length}</span>
+                  }
                 <FaRegHeart className="icons" />
               </NavLink>
             </li>
 
             <li className="nav--item">
               <NavLink to="/cart" className="nav--link">
-                <span className="badge--number">{cart.length}</span>
+                { cart.length>0 &&
+                  <span className="badge--number">{cart.length}</span>
+                  }
                 <FaShoppingCart className="icons" />
               </NavLink>
             </li>
