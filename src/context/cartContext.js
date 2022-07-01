@@ -29,7 +29,9 @@ const CartProvider = ({children}) => {
     async function addToCart (item, dispatch){
       console.log("Cart add")
       if( (cart.find((element) => element._id === item._id))) {
+        console.log("Item is already in cart")
       }
+      else{
       const response = await axios({
           method: 'post',
           url: '/api/user/cart',
@@ -42,6 +44,7 @@ const CartProvider = ({children}) => {
          dispatch({type: 'CART', payload: response.data.cart});
         //  Toast({ type: "success", msg: "Product added to cart" });
        }
+      }
       
     }
 
