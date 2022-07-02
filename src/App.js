@@ -4,8 +4,8 @@ import { Auth } from "./components/Auth/Auth";
 import { CartPage } from "./pages/cartPage/CartPage";
 import { LandingPage } from "./pages/landingPage/LandingPage";
 import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
-import  MockMan  from 'mockman-js';
-// import { ToastContainer } from "react-toastify";
+// import  MockMan  from 'mockman-js';
+import { ToastContainer } from "react-toastify";
 import { WishlistPage } from "./pages/wishlistPage/WishlistPage";
 import { ProductListing } from "./pages/productListing/ProductListing";
 import { Signup } from "./pages/signupPage/Signup";
@@ -42,7 +42,7 @@ function App() {
         />
         {/* <Route path="/cart" element={<CartPage />} />
         <Route path="/wishlist" element={<WishlistPage />} /> */}
-        <Route path="/mockman" element={<MockMan />} />
+        {/* <Route path="/mockman" element={<MockMan />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
@@ -50,7 +50,7 @@ function App() {
 
       </Routes>
       <Footer/>
-      {/* <ToastContainer position="top-right" /> */}
+      <ToastContainer position="top-right" />
     </div>
   );
 }

@@ -47,7 +47,10 @@ const WishlistPage = () => {
                 <CardVertical
                   key={item._id}
                   product={item}
-                  addToCart={() => addToCart(item, dispatch)}
+                  addToCart={() => {
+                    addToCart(item, dispatch)
+                    removeFromWishlist(item._id, dispatch)
+                    }}
                   addToWishlist={() => removeFromWishlist(item._id, dispatch)}
                 />
               ))

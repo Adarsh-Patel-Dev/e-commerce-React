@@ -19,7 +19,7 @@ const WishlistProvider = (props) => {
       },
     });
     dispatch({ type: "WISHLIST", payload: response.data.wishlist });
-    // Toast({ type: "info", msg: "Product removed from wishlist" });
+    Toast({ type: "info", msg: "Product removed from wishlist" });
   }
 
   async function addToWishlist(product, payload) {
@@ -37,7 +37,7 @@ const WishlistProvider = (props) => {
 
       if (response.status === 201) {
         dispatch({ type: "WISHLIST", payload: response.data.wishlist });
-        // Toast({ type: "success", msg: "Product added to wishlist" });
+        Toast({ type: "success", msg: "Product added to wishlist" });
       }
     }
   }

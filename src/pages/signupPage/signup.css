@@ -1,5 +1,5 @@
 .checkbox{
-    accent-color: var(--LIGHT-GREEN);
+    accent-color: var(--GREEN);
 }
 
 .main{
@@ -47,7 +47,7 @@
     font-style: normal;
     font-size: 3.84rem;
     line-height: 5.2rem;
-    color: var(--LIGHT-GREEN);;
+    color: var(--GREEN);;
 
 }
 
@@ -59,7 +59,7 @@
     width: 30rem;
     background: var(--WHITE);
 
-    border: 1px solid VAR(--LIGHT-GREEN);
+    border: 1px solid VAR(--GREEN);
     box-sizing: border-box;
     border-radius: 100px;
 }
@@ -92,7 +92,7 @@
     font-size: 1.5rem;
     border:transparent;
     font-family: inherit;
-    background: VAR(--LIGHT-GREEN);;
+    background: VAR(--GREEN);;
     box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     transition: 0.5s;

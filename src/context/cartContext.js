@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
-// import { Toast } from "../components/Toast/Toast"
+import { Toast } from "../components/Toast/Toast"
 import axios from 'axios';
 
 
@@ -42,7 +42,7 @@ const CartProvider = ({children}) => {
      
        if(response.status === 201) {
          dispatch({type: 'CART', payload: response.data.cart});
-        //  Toast({ type: "success", msg: "Product added to cart" });
+         Toast({ type: "success", msg: "Product added to cart" });
        }
       }
       
@@ -66,7 +66,7 @@ const CartProvider = ({children}) => {
 
         if (response.status === 200) {
           dispatch({type: "CART", payload: response.data.cart})
-          // Toast({ type: "success", msg: "Product quantity updated in cart."});
+          Toast({ type: "success", msg: "Product quantity updated in cart."});
         }
       } catch (err) {
         console.log(err);
@@ -83,7 +83,7 @@ const CartProvider = ({children}) => {
           },
         })
         dispatch({type:"CART", payload:response.data.cart})
-        // Toast({ type: "success", msg: "Product removed from cart" });
+        Toast({ type: "success", msg: "Product removed from cart" });
       };
 
    

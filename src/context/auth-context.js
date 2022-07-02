@@ -40,6 +40,10 @@ const AuthProvider = ({ children }) => {
 
 
   async function signUp(firstName, lastname, email, pasword, navigate, location, encodedToken) {
+    if( firstName === "" || lastname === "" || email === "" ||pasword === "" ){
+
+      Toast({ type: "error", msg: "Please input all fields."});
+    }
     try {
       const regExForEmail =  /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
       if(encodedToken){
@@ -59,24 +63,24 @@ const AuthProvider = ({ children }) => {
       if (response.status === 201) {
         localStorage.setItem("token",response.data.encodedToken);
         navigate(location?.state?.from?.pathname, { replace: true})
-        Toast({ type: "sucess", msg: `Welcome ${response.data.createdUser.someUserAttribute1}` });
+        Toast({ type: "success", msg: `Welcome ${response.data.createdUser.someUserAttribute1}` });
         setUserName(response.data.createdUser.someUserAttribute1)
       } else{
           console.log("Wrong Email format!!!")
-          // Toast({ type: "error", msg: "Wrong Email format!!!" });
-      }
+          Toast({ type: "error", msg: "Wrong Email format!!!" });
+        }
       }
     } catch (error) {
       console.error(error);
-      // Toast({ type: "error", msg: error });
+      Toast({ type: "error", msg: error });
     }
   }
 
   async function login(email, password, navigate, location, encodedToken) {
+    if( email === "" || password === ""){
+      Toast({ type: "error", msg: "Enter all inputs." });
+    }
     try {
-        if(encodedToken){
-            // Toast({ type: "info", msg: `Hey ${response.data.createdUser.someUserAttribute1}, you're already Logged IN 😎`  });            
-        }
       const response = await axios({
         method: "POST",
         url: "/api/auth/login",
@@ -88,11 +92,11 @@ const AuthProvider = ({ children }) => {
       if (response.status === 200) {
         localStorage.setItem("token",response.data.encodedToken);
         navigate(location?.state?.from?.pathname, { replace: true})
-        // Toast({ type: "success", msg: "Log In successful" });
+        Toast({ type: "success", msg: "Log In successful" });
       }
     } catch (error) {
       console.log(error);
-      // Toast({ type: "error", msg: error });
+      Toast({ type: "error", msg: error });
     }
   }
 

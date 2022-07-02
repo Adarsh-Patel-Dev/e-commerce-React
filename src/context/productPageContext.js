@@ -79,7 +79,6 @@ const ProductPageProvider = ({children}) => {
 
     const { productListing, sort, rating, priceRange, category } = productState;
 
-    // localStorage.setItem('token', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJlMzIzZmY2MC1hMTUzLTQ0MTYtYmEyNS0zNDQ0ZGI1NjliOWMiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ._-fah2UEuueLmRHHl5uV4CYhiQdODX6neUkGbfTvtFM");
 
     return (
         <ProductPageContext.Provider value={{ productListing, sort, rating, priceRange, category, productDispatch }}>

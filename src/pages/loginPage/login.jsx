@@ -1,9 +1,7 @@
 import "./login.css";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/auth-context";
-
-
-// https://images.unsplash.com/photo-1457530378978-8bac673b8062?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+import {Toast} from "../../components/Toast/Toast"
 
 const Login = () => {
 
@@ -74,7 +72,7 @@ const Login = () => {
           >
             Login
           </button>
-          <button className="btn-login"
+          <button className="btn-login outline"
            onClick={()=>login("adarshpatel@gmail.com","adarsh@neog",navigate,location,encodedToken)}
           >Test Login</button>
   
