@@ -66,8 +66,7 @@ const CartPage = () => {
 
         {cart.length === 0 ? (
           <h3 className="cart-heading-empty">
-            Your cart is empty. Please add items in your.
-            <FaShoppingCart className="green" />
+            Your cart is empty.
             <Link to="/products">
               <button className="green btn btn--primary">Add items</button>
             </Link>

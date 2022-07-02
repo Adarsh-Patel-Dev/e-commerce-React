@@ -20,7 +20,7 @@ const CardVertical = ({ product, addToWishlist, addToCart }) => {
   const { removeFromWishlist } = useWishlistContext();
   const { wishlist, cart } = state;
   const navigate = useNavigate();
-  const {pathname} = useLocation(); //location is obj {pathname, state, something}
+  const {pathname} = useLocation();                   //location is obj {pathname, state, something}
   const encodedToken = localStorage.getItem("token")
 
   return (

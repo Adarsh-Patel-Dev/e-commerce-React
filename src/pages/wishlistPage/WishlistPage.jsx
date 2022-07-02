@@ -37,8 +37,7 @@ const WishlistPage = () => {
           <div className="wishlist-items">
             {wishlist.length === 0 ? (
               <h2 className="wishlist-empty">
-                Your wishlist is empty. Please add Items in your
-                <FaRegHeart className="green" />
+                Your wishlist is empty. 
                 <Link to="/products">
            <button className="green btn btn--primary" >Add items</button>
            </Link> 

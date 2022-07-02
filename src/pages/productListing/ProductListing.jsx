@@ -226,7 +226,7 @@ const ProductListing = () => {
           ) : (
             <div>
               <h2 class="main-section-title">
-                Results:{" "}
+                Results:
                 <span className="green">({searchResultData.length})</span>
               </h2>
               <div>
