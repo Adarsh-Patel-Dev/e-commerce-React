@@ -16,6 +16,7 @@ const Signup = () => {
     signUp,
   } = useAuthContext();
 
+
   return (
     <div className="main">
       <img

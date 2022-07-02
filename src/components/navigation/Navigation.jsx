@@ -54,9 +54,6 @@ const Navigation = () => {
             style={{display:!searchValue.length?"none":"block"}}
             onClick={()=>setSearchValue("")}  
             />
-            {/* <button className="nav--search--btn">
-                    <FaSearch /> 
-                </button> */}
           </div>
         )}
 
@@ -82,11 +79,11 @@ const Navigation = () => {
             <li className="nav--item">
               {!token ? (
                 <NavLink
-                  to="/signup"
+                  to="/login"
                   className="nav--link"
                   state={{ from: location }}
                 >
-                  <span className="nav--link link-btn btn-solid">Signup</span>
+                  <span className="nav--link link-btn btn-solid">Login</span>
                 </NavLink>
               ) : (
                 <div

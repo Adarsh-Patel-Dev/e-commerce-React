@@ -227,7 +227,7 @@ const ProductListing = () => {
             <div>
               <h2 class="main-section-title">
                 Results:{" "}
-                <span className="green">({finalCategoryData.length})</span>
+                <span className="green">({searchResultData.length})</span>
               </h2>
               <div>
                 <div class="main-section-card">

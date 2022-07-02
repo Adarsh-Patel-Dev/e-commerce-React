@@ -16,6 +16,8 @@ const Login = () => {
       authDispatch,
       login,
     } = useAuthContext();
+
+    console.log("location", location)
   
     return (
       <div className="main">
