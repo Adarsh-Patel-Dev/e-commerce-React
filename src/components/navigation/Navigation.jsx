@@ -1,7 +1,7 @@
 import "./navigation.css";
 
 import { FaSearch, FaRegHeart, FaHeart, FaShoppingCart } from "react-icons/fa";
-import { MdOutlineShoppingCart, MdShoppingCart, MdClear } from "react-icons/md";
+import { MdOutlineShoppingCart, MdShoppingCart, MdClear, MdStoreMallDirectory } from "react-icons/md";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { useCartContext } from "../../context/cartContext";
 import Logo from "../../images/planet-logo.svg";
@@ -59,6 +59,12 @@ const Navigation = () => {
 
         <div className="nav--links">
           <ul className="nav--list">
+            <li className="nav--item">
+              <NavLink to="/products" className="nav--link">
+                <MdStoreMallDirectory className="icons" />
+              </NavLink>
+            </li>
+
             <li className="nav--item">
               <NavLink to="/wishlist" className="nav--link">
                 { wishlist.length>0 &&

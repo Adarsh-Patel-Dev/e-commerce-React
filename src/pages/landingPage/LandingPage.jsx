@@ -60,6 +60,7 @@ const LandingPage = () => {
             <Category
              key={category._id}
               categories={category.categoryName}
+              img = {category.img}
               func={() => {
                 let categoryUppercase = category.categoryName.toUpperCase();
                 if (categoryUppercase === "FLOWERINGPLANTS") {

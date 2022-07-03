@@ -1,7 +1,7 @@
 import { useContext, createContext } from "react";
 import axios from "axios";
 import { useCartContext } from "./cartContext";
-// import { Toast } from "../components/Toast/Toast"
+import { Toast } from "../components/Toast/Toast"
 
 const WishlistContext = createContext();
 const useWishlistContext = () => useContext(WishlistContext);
@@ -19,7 +19,7 @@ const WishlistProvider = (props) => {
       },
     });
     dispatch({ type: "WISHLIST", payload: response.data.wishlist });
-    Toast({ type: "info", msg: "Product removed from wishlist" });
+    Toast({ type: "success", msg: "Product removed from wishlist" });
   }
 
   async function addToWishlist(product, payload) {

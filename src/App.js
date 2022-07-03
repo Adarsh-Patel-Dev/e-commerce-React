@@ -14,12 +14,16 @@ import { Logout } from "./pages/logoutPage/Logout";
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer/Footer";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import AddressModal from "./components/AddressModal/AddressModal";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/modal" element={<AddressModal />} />
         <Route path="/products" element={<ProductListing />} />
 
         {/* Private Routes */}

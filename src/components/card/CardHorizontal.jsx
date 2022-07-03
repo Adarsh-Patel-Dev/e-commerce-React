@@ -1,21 +1,12 @@
 import "./card.css";
-import { FaRegHeart, FaStar, FaShoppingCart } from "react-icons/fa";
+import { FaRegHeart, FaStar, FaShoppingCart,  } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
 import { useEffect, useState, useContext } from 'react';
 import { useCartContext } from "../../context/cartContext";
 
 const CardHorizontal = ({product, addToWishlist, removeFromCart }) => {
 
     const { changeCartQty } = useCartContext();
-
-    // const [counter, setCounter] = useState(1);
-
-    // function increment () {
-    //     setCounter(counter + 1);
-    // }
-
-    // function decrement () { 
-    //     setCounter(counter - 1);
-    // }
 
     const {title, desc, rating, instock,  price:{original, discount, discounted}, categoryName , img} = product;
     
@@ -33,7 +24,6 @@ const CardHorizontal = ({product, addToWishlist, removeFromCart }) => {
                         <div className="card--body">
                             <div className="card--details">
                                 <h4 className="card--title">{title}</h4>
-                                {/* <div className="card--description">{desc}</div> */}
                                 <div className="badge-rating">
                                     3.5 <FaStar className="fa fa-star" style={{fontSize:"0.9rem", color: "white"}}></FaStar>
                                 </div>
@@ -48,7 +38,6 @@ const CardHorizontal = ({product, addToWishlist, removeFromCart }) => {
                                         <button className="btn-minus" 
                                         disabled={(product.qty>1)?false:true}
                                         onClick={()=>changeCartQty("decrement", product._id)}>-</button>
-
                                         <label type="text"  className="card--qty-input">{product.qty}</label>
                                         <button className="btn-plus"
                                         onClick={()=>changeCartQty("increment", product._id)}>+</button>

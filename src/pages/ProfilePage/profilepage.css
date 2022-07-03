@@ -1,0 +1,49 @@
+.profile-conatainer{
+    padding: 5rem;
+    margin: 5rem auto;
+    box-shadow: 0px 0px 15px var(--BOX-SHADOW);
+    width: 50%;
+    
+}
+
+.user-details{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem;
+    background-color: gray;
+}
+
+.user-avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--BLACK-60);
+    color: white;
+    font-size: 5rem;
+    font-weight: 600;
+    border-radius: 50%;
+    width:10rem;
+    height: 10rem;
+    padding: 1rem;
+}
+
+.user-name{
+    font-size: 2rem;
+}
+
+.account-deatils-list{
+ padding: 2rem 0;
+}
+
+.account-deatils-list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 1rem 0;
+    border-bottom: thin solid gray;
+}
