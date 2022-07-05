@@ -10,6 +10,29 @@ const useAddressContext = () => useContext(AddressContext);
 
 const AddressProvider = ({children}) => {
 
+  const initialState = {
+    address:[{
+      name:"Adarsh",
+      phone: "9012345678",
+      pincode:"226022",
+      city:"Lucknow",
+      state:"UP",
+      area:"Indira Nagar",
+      flatNum:"37",
+      id: uuid(),
+   }],
+  name:"",
+  phone: "",
+  pincode:"",
+  city:"",
+  states:"",
+  area:"",
+  flatNum:"",
+  isOpen:false,
+  isEdit:false,
+  id:null,
+  }
+
     function reducerFunc(state,action){
       switch ( action.type) {
         case "ADDRESS":
@@ -34,6 +57,15 @@ const AddressProvider = ({children}) => {
             return { ...state, isOpen:action.payload}
           case "IS_EDIT":
             return { ...state, isEdit:action.payload}
+            case "CLEAR_DATA":
+              return { ...state, name:"",
+              phone: "",
+              pincode:"",
+              city:"",
+              states:"",
+              area:"",
+              flatNum:"",
+             }
         default:
           break;
       }
@@ -45,8 +77,8 @@ const AddressProvider = ({children}) => {
             phone: "9012345678",
             pincode:"226022",
             city:"Lucknow",
-            state:"UP",
-            area:"Indira Nagar",
+            states:"UP",
+            area:"Faridi Nagar,Indira Nagar",
             flatNum:"37",
             id: uuid(),
          }],

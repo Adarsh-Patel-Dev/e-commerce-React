@@ -1,5 +1,6 @@
 import './cartPrice.css'
 import React from 'react'
+import { Link } from "react-router-dom"
 
 function CartPrice({qty, price, discountPrice, totalPrice}) {
   return (
@@ -27,7 +28,9 @@ function CartPrice({qty, price, discountPrice, totalPrice}) {
         </div>
         <hr/>
         <p className="price-component-para">You will save {'\u20B9'} {qty*discountPrice} on this order </p>
+       <Link to = "/checkout">
         <button className="btn btn--primary order-btn">Proceed to Checkout</button>
+       </Link>
         
     </div>
     </div>

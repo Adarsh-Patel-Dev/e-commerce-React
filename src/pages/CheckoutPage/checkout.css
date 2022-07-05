@@ -1,0 +1,11 @@
+.checkout-conatiner{
+    min-height: 100vh;
+    height: auto;
+}
+
+.checkout-details {
+    align-items: baseline;
+    padding: 5rem;
+    display: flex;
+    justify-content: space-between;
+}

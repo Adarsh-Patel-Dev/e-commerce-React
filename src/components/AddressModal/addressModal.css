@@ -136,6 +136,6 @@
   
   .modal-title {
     margin-top: 1.5rem;
-    color: rgb(152, 208, 253);
+    color: rgb(152, 208, 253) !important;
     font-size: 1.5rem;
   }

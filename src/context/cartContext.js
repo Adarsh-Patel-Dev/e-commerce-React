@@ -38,10 +38,10 @@ const CartProvider = ({children}) => {
           headers: { authorization: localStorage.getItem('token') },
           data: { product: item }
       });
-      console.log("Cart add2")
      
        if(response.status === 201) {
          dispatch({type: 'CART', payload: response.data.cart});
+         console.log("from cart add",response.data.cart);
          Toast({ type: "success", msg: "Product added to cart" });
        }
       }
@@ -66,6 +66,8 @@ const CartProvider = ({children}) => {
 
         if (response.status === 200) {
           dispatch({type: "CART", payload: response.data.cart})
+         console.log("from cart update",response.data.cart);
+
           Toast({ type: "success", msg: "Product quantity updated in cart."});
         }
       } catch (err) {
@@ -83,6 +85,7 @@ const CartProvider = ({children}) => {
           },
         })
         dispatch({type:"CART", payload:response.data.cart})
+        console.log("from cart remove",response.data.cart);
         Toast({ type: "success", msg: "Product removed from cart" });
       };
 

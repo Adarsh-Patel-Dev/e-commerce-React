@@ -212,11 +212,10 @@ const ProductListing = () => {
 
   return (
     <>
-      <Navigation />
 
-      <section class="body-section">
+      <section className="body-section">
         <AsideBar />
-        <section class="main-section">
+        <section className="main-section">
           {loading ? (
             <span className="spinner">
               <TailSpin color="#76C310" height={80} width={80} />
@@ -225,12 +224,12 @@ const ProductListing = () => {
             </span>
           ) : (
             <div>
-              <h2 class="main-section-title">
+              <h2 className="main-section-title">
                 Results:
                 <span className="green">({searchResultData.length})</span>
               </h2>
               <div>
-                <div class="main-section-card">
+                <div className="main-section-card">
                   {searchResultData.length > 0 ? (
                     searchResultData.map((product) => (
                       <CardVertical

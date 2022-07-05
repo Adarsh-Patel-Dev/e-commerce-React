@@ -11,23 +11,27 @@ import { ProductListing } from "./pages/productListing/ProductListing";
 import { Signup } from "./pages/signupPage/Signup";
 import { Login } from "./pages/loginPage/login";
 import { Logout } from "./pages/logoutPage/Logout";
-import React from 'react';
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer/Footer";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import AddressModal from "./components/AddressModal/AddressModal";
+import { Navigation } from "./components";
+import { CheckoutPage } from "./pages/CheckoutPage/CheckoutPage";
 
 function App() {
   return (
     <div className="App">
+      <Navigation />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/modal" element={<AddressModal />} />
         <Route path="/products" element={<ProductListing />} />
 
         {/* Private Routes */}
-        
+
         <Route
           path="/wishlist"
           element={
@@ -51,9 +55,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<ErrorPage />} />
-
       </Routes>
-      <Footer/>
+      <Footer />
       <ToastContainer position="top-right" />
     </div>
   );

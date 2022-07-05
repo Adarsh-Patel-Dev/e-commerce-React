@@ -45,13 +45,13 @@ const CardHorizontal = ({product, addToWishlist, removeFromCart }) => {
                                 </div>
                             </div>
 
-                            <div class="card--buttons--horizontal">
+                            <div className="card--buttons--horizontal">
                                 <button 
                                 onClick={removeFromCart}
-                                class="btn btn--primary btn--outline">Remove From CART</button>
+                                className="btn btn--primary btn--outline">Remove From CART</button>
                                 <button 
                                 onClick={addToWishlist}
-                                class="btn btn--primary">Move To Wishlist</button>
+                                className="btn btn--primary">Move To Wishlist</button>
                             </div>
                         </div>
                     </div>

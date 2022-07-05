@@ -25,7 +25,7 @@ const CartPage = () => {
       }
     })();
   }, []);
-  console.log("hello", cart);
+
   const price = cart.reduce(
     (acc, item) => acc + Number(item.qty) * Number(item.price.original),
     0
@@ -45,14 +45,12 @@ const CartPage = () => {
 
   return (
     <>
-      <Navigation />
-
-      <h3 class="cart-heading">
+      <h3 className="cart-heading">
         My <span className="green">Cart({cart.length})</span>
       </h3>
-      <section class="cart-section">
-        <div class="cart-container">
-          <div class="card-component">
+      <section className="cart-section">
+        <div className="cart-container">
+          <div className="card-component">
             {cart.map((item) => (
               <CardHorizontal
                 key={item._id}

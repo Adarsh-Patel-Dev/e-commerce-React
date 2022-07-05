@@ -27,7 +27,6 @@ const WishlistPage = () => {
 
   return (
     <>
-      <Navigation />
       <section className="wishlist-section">
         <div className="wishlist-container">
           <h1 className="wishlist-title">

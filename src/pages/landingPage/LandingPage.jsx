@@ -19,7 +19,7 @@ const LandingPage = () => {
   const { state, dispatch } = useCartContext();
   const { cart } = state;
   const { setWishlist, addToWishlist } = useWishlistContext();
-  const { addToCart } = useCartContext()
+  const { addToCart } = useCartContext();
 
   const { searchValue, setSearchValue, category } = useCategoryContext();
 
@@ -34,8 +34,6 @@ const LandingPage = () => {
 
   return (
     <div>
-      <Navigation />
-
       <section className="hero-section">
         <div className="hero-text">
           The Best <span className="light-green">PLANTS</span>
@@ -58,9 +56,9 @@ const LandingPage = () => {
         <div className="category">
           {category.map((category) => (
             <Category
-             key={category._id}
+              key={category._id}
               categories={category.categoryName}
-              img = {category.img}
+              img={category.img}
               func={() => {
                 let categoryUppercase = category.categoryName.toUpperCase();
                 if (categoryUppercase === "FLOWERINGPLANTS") {
@@ -79,7 +77,6 @@ const LandingPage = () => {
               }}
             />
           ))}
-         
         </div>
       </section>
 
@@ -90,8 +87,8 @@ const LandingPage = () => {
         </NavLink>
       </div>
 
-      <section class="cards">
-        <div class="card--container">
+      <section className="cards">
+        <div className="card--container">
           {productListing
             .filter((item) => item.rating > 4.4)
             .map((product) => (

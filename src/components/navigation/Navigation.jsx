@@ -34,7 +34,7 @@ const Navigation = () => {
         </span>
         <NavLink to="/">
           <div className="nav--header">
-            <h2 class="nav--title">
+            <h2 className="nav--title">
               Plan<span style={{ color: "white" }}>e</span>t
             </h2>
           </div>
@@ -60,7 +60,7 @@ const Navigation = () => {
         <div className="nav--links">
           <ul className="nav--list">
             <li className="nav--item">
-              <NavLink to="/products" className="nav--link">
+              <NavLink to="/checkout" className="nav--link">
                 <MdStoreMallDirectory className="icons" />
               </NavLink>
             </li>

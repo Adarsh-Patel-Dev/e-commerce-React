@@ -20,34 +20,51 @@ function AddressModal() {
   } = state;
   console.log("addressState", address);
   const addressobj = {
-    name: name,
+    name,
     phone,
     pincode,
     city,
-    state,
+    states,
     area,
     flatNum,
     id: uuid(),
   };
 
+  function deleteAddress(id) {
+    return address.filter(address.id !== id);
+  }
+
+  function editAddress(id) {
+    const addressTobeEdited = address.filter((address) => address.id === id);
+    addressobj = addressTobeEdited[0];
+    const indexOfAddress = address.indexOf(addressTobeEdited);
+    if (indexOfAddress !== -1) {
+      address[indexOfAddress] = addressobj;
+    }
+  }
+
   function addressSubmit(e) {
     e.preventDefault();
     addressDispatch({ type: "ADDRESS", payload: addressobj });
-    addressDispatch({ type: "IS_OPEN", payload: true });
+    addressDispatch({ type: "IS_OPEN", payload: false });
+    addressDispatch({ type: "CLEAR_DATA" });
+    addressDispatch({ type: "IS_EDIT", payload:false });
   }
 
   return (
     <div>
       <div
-        style={{ display: isOpen ? "none" : "block" }}
+        style={{ display: !isOpen ? "none" : "block" }}
         className="modal-container"
       >
         <div id="mymodal" className="Modal">
-          <form onSubmit={(e) => addressSubmit(e)} className="modal--content">
+          <form onSubmit={(e) => !isEdit? addressSubmit(e):editAddress(id) } className="modal--content">
             <MdClose
-              onClick={() =>
-                addressDispatch({ type: "IS_OPEN", payload: true })
-              }
+              onClick={() => {
+                addressDispatch({ type: "IS_OPEN", payload: false });
+                addressDispatch({ type: "CLEAR_DATA" });
+                addressDispatch({ type: "IS_EDIT", payload:false });
+              }}
               className="close"
             ></MdClose>
 
@@ -57,7 +74,7 @@ function AddressModal() {
                 Name
               </label>
               <input
-              required
+                required
                 name="addressInput"
                 type="text"
                 onChange={(e) =>
@@ -71,7 +88,7 @@ function AddressModal() {
                 Phone number
               </label>
               <input
-               required
+                required
                 name="addressInput"
                 type="number"
                 minLength={10}
@@ -91,9 +108,9 @@ function AddressModal() {
                     Pincode
                   </label>
                   <input
-                  required
-                  type="number"
-                  minLength="6"
+                    required
+                    type="number"
+                    minLength="6"
                     name="addressInput"
                     onChange={(e) =>
                       addressDispatch({
@@ -111,8 +128,8 @@ function AddressModal() {
                     City
                   </label>
                   <input
-                  required
-                  type="text"
+                    required
+                    type="text"
                     name="addressInput"
                     onChange={(e) =>
                       addressDispatch({ type: "CITY", payload: e.target.value })
@@ -130,7 +147,7 @@ function AddressModal() {
                   </label>
                   <input
                     required
-                  type="text"
+                    type="text"
                     name="addressInput"
                     onChange={(e) =>
                       addressDispatch({
@@ -148,8 +165,8 @@ function AddressModal() {
                     Flat No.
                   </label>
                   <input
-                  required
-                  type='text'
+                    required
+                    type="text"
                     name="addressInput"
                     onChange={(e) =>
                       addressDispatch({
@@ -167,8 +184,8 @@ function AddressModal() {
                 Locality/Area
               </label>
               <input
-              required
-              type="text"
+                required
+                type="text"
                 name="addressInput"
                 onChange={(e) =>
                   addressDispatch({ type: "AREA", payload: e.target.value })
@@ -178,30 +195,39 @@ function AddressModal() {
                 placeholder="Enter Locality/Area"
               ></input>
 
-              <div className="modal--btn">
+             { !isEdit ? ( <div className="modal--btn">
                 <input
                   type="submit"
                   value="Add Address"
                   className="btn-modal"
                 />
-              </div>
+              </div>):
+              ( <div className="modal--btn">
+                <input
+                  type="submit"
+                  value="Update Address"
+                  className="btn-modal"
+                />
+              </div>)}
 
-              <div className="modal--btn">
+              {!isEdit?(<div className="modal--btn">
                 <div
-                  onClick={(e)=>{
-                    addressDispatch({ type: "NAME", payload: "Happy" })
-                    addressDispatch({ type: "PHONE", payload: "1234567890" })
-                    addressDispatch({ type: "PINCODE", payload: "123456" })
-                    addressDispatch({ type: "CITY", payload: "Agra" })
-                    addressDispatch({ type: "STATE", payload: "UP" })
-                    addressDispatch({ type: "AREA", payload: "Gomti Nagar" })
-                    addressDispatch({ type: "FLAT_NUM", payload: "22" })
-                    addressDispatch({ type: "ADDRESS_ID", payload: uuid() })
+                  onClick={(e) => {
+                    addressDispatch({ type: "NAME", payload: "Happy" });
+                    addressDispatch({ type: "PHONE", payload: "1234567890" });
+                    addressDispatch({ type: "PINCODE", payload: "123456" });
+                    addressDispatch({ type: "CITY", payload: "Agra" });
+                    addressDispatch({ type: "STATE", payload: "UP" });
+                    addressDispatch({ type: "AREA", payload: "Gomti Nagar" });
+                    addressDispatch({ type: "FLAT_NUM", payload: "22" });
+                    addressDispatch({ type: "ADDRESS_ID", payload: uuid() });
                   }}
                   name="Add Address"
                   className="btn-modal outline-btn"
-                >Test Address</div>
-              </div>
+                >
+                  Test Address
+                </div>
+              </div>):""}
             </div>
           </form>
         </div>
