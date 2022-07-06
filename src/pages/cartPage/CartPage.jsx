@@ -2,7 +2,7 @@ import { CardHorizontal, Navigation } from "../../components/";
 import { FaShoppingCart, FaRegShoppingCart } from "react-icons/fa";
 import "./cartPage.css";
 import { useWishlistContext, useCartContext } from "../../context";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import CartPrice from "../../components/CartPrice/CartPrice";
@@ -56,13 +56,14 @@ const CartPage = () => {
                 key={item._id}
                 product={item}
                 removeFromCart={() => removeFromCart(item._id, dispatch)}
-                addToWishlist={() => addToWishlist(item, dispatch)}
+                addToWishlist={() => { removeFromCart(item._id, dispatch)
+                  addToWishlist(item, dispatch)}}
               />
             ))}
           </div>
         </div>
 
-        {cart.length === 0 ? (
+        { cart.length === 0 ? (
           <h3 className="cart-heading-empty">
             Your cart is empty.
             <Link to="/products">

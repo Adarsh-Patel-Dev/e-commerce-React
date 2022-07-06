@@ -39,6 +39,8 @@ const AddressProvider = ({children}) => {
           return {...state, address:[...state.address,action.payload]}
           case "NAME":
             return { ...state, name:action.payload}
+          case "SELECTED_ADDRESS":
+            return { ...state, selectedAddressId:action.payload}
           case "PHONE":
             return { ...state, phone:action.payload}
           case "PINCODE":
@@ -92,9 +94,11 @@ const AddressProvider = ({children}) => {
         isOpen:false,
         isEdit:false,
         id:null,
+        selectedAddressId:null,
       
     })
 
+    
 
     
     return(

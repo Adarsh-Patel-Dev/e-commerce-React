@@ -1,5 +1,5 @@
 .modal-container {
-    backdrop-filter: brightness(0.09);
+    backdrop-filter: brightness(0.5);
     position: fixed;
     min-width: 10rem;
     width: 100%;

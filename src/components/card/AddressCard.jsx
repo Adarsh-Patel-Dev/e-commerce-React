@@ -33,7 +33,6 @@ function AddressCard() {
     area,
     flatNum,
     id
-    // id: uuid(),
   };
 
   function deleteAddress(id){
@@ -66,7 +65,9 @@ function AddressCard() {
       address[indexOfAddress] = addressobj
     }
   }
-  return (<>
+  return (<div>
+   
+
     {address.map(address=>(<div className='addressCard-container' key={address.id}>
      <div className='address-hearder'>
        <div className='address-header-heading'>
@@ -95,6 +96,7 @@ function AddressCard() {
          onClick={()=>{
           addressDispatch({type:"IS_OPEN", payload:true})
           addressDispatch({type:"IS_EDIT", payload:true})
+          addressDispatch({type:"SELECTED_ADDRESS", payload:address.id})
           IseditAddress(address.id)
           
           }}
@@ -102,7 +104,7 @@ function AddressCard() {
      </div>
      <AddressModal/>
     </div>))}
-    </>
+    </div>
   )
 }
 

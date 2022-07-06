@@ -17,9 +17,11 @@ function AddressModal() {
     flatNum,
     isOpen,
     isEdit,
+    selectedAddressId,
   } = state;
   console.log("addressState", address);
-  const addressobj = {
+  console.log("addressSelected", selectedAddressId);
+  let addressobj = {
     name,
     phone,
     pincode,
@@ -34,13 +36,14 @@ function AddressModal() {
     return address.filter(address.id !== id);
   }
 
-  function editAddress(id) {
-    const addressTobeEdited = address.filter((address) => address.id === id);
-    addressobj = addressTobeEdited[0];
-    const indexOfAddress = address.indexOf(addressTobeEdited);
+  function editAddress(e,id) {
+    e.preventDefault();
+    let indexOfAddress = address.findIndex(address=>address.id===id);
+    console.log("index",indexOfAddress)
     if (indexOfAddress !== -1) {
-      address[indexOfAddress] = addressobj;
+      address[indexOfAddress] = {...addressobj};
     }
+    addressDispatch({ type: "IS_OPEN", payload: false });
   }
 
   function addressSubmit(e) {
@@ -58,7 +61,7 @@ function AddressModal() {
         className="modal-container"
       >
         <div id="mymodal" className="Modal">
-          <form onSubmit={(e) => !isEdit? addressSubmit(e):editAddress(id) } className="modal--content">
+          <form onSubmit={(e) => !isEdit? addressSubmit(e):editAddress(e,selectedAddressId) } className="modal--content">
             <MdClose
               onClick={() => {
                 addressDispatch({ type: "IS_OPEN", payload: false });
