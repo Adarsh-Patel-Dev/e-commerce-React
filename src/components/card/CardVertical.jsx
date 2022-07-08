@@ -1,6 +1,5 @@
 import { FaRegHeart, FaStar, FaHeart } from "react-icons/fa";
-import { useCartContext } from "../../context/cartContext";
-import { useWishlistContext } from "../../context/wishListContext";
+import { useCartContext, useWishlistContext } from "../../context/index";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./card.css";
 
@@ -20,8 +19,8 @@ const CardVertical = ({ product, addToWishlist, addToCart }) => {
   const { removeFromWishlist } = useWishlistContext();
   const { wishlist, cart } = state;
   const navigate = useNavigate();
-  const {pathname} = useLocation();                   //location is obj {pathname, state, something}
-  const encodedToken = localStorage.getItem("token")
+  const { pathname } = useLocation();             //location is obj {pathname, state, something}
+  const encodedToken = localStorage.getItem("token");
 
   return (
     <div className="card">
@@ -33,11 +32,14 @@ const CardVertical = ({ product, addToWishlist, addToCart }) => {
           <FaHeart style={{ color: "red", fontSize: "1.5rem" }} />
         </button>
       ) : (
-        <button onClick={encodedToken?
-        addToWishlist:
-        ()=>navigate('/login', {state: {from: pathname}})
-        } 
-        className="wishlist--badge">
+        <button
+          onClick={
+            encodedToken
+              ? addToWishlist
+              : () => navigate("/login", { state: { from: pathname } })
+          }
+          className="wishlist--badge"
+        >
           <FaRegHeart style={{ color: "red", fontSize: "1.5rem" }} />
         </button>
       )}
@@ -79,7 +81,14 @@ const CardVertical = ({ product, addToWishlist, addToCart }) => {
               Go to Cart
             </button>
           ) : (
-            <button onClick={encodedToken?addToCart:()=>navigate("/login", {state: {from: {pathname}}})} className="btn btn--primary">
+            <button
+              onClick={
+                encodedToken
+                  ? addToCart
+                  : () => navigate("/login", { state: { from: { pathname } } })
+              }
+              className="btn btn--primary"
+            >
               Add to cart
             </button>
           )}

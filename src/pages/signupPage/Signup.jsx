@@ -4,18 +4,15 @@ import { useAuthContext } from "../../context/auth-context";
 import "./signup.css";
 
 const Signup = () => {
-
-
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const encodedToken = localStorage.getItem("token");
   const {
     authState: { firstName, lastName, email, password, confirmPassword },
     authDispatch,
     signUp,
   } = useAuthContext();
-
 
   return (
     <div className="main">
@@ -39,16 +36,16 @@ const Signup = () => {
             required
           />
         </div>
-          <input
-            onChange={(e) =>
-              authDispatch({ type: "LAST_NAME", payload: e.target.value })
-            }
-            value={lastName}
-            type="email"
-            className="signup-input"
-            placeholder="Last Name"
-            required
-          />
+        <input
+          onChange={(e) =>
+            authDispatch({ type: "LAST_NAME", payload: e.target.value })
+          }
+          value={lastName}
+          type="email"
+          className="signup-input"
+          placeholder="Last Name"
+          required
+        />
         <input
           onChange={(e) =>
             authDispatch({ type: "EMAIL", payload: e.target.value })
@@ -82,20 +79,17 @@ const Signup = () => {
         {confirmPassword !== "" && password === confirmPassword ? (
           <span>Passwords are matched ✅</span>
         ) : (
-          confirmPassword !== "" &&  (<span>Passwords mis-matched❗</span>)
-        )} 
+          confirmPassword !== "" && <span>Passwords mis-matched❗</span>
+        )}
 
         <div className="checkbox-signup">
-          <label className="signup-label">
-          </label>
+          <label className="signup-label"></label>
         </div>
-
 
         <button
           className="btn-login"
           onClick={() =>
             signUp(
-              
               firstName,
               lastName,
               email,
@@ -123,6 +117,5 @@ const Signup = () => {
     </div>
   );
 };
-
 
 export { Signup };

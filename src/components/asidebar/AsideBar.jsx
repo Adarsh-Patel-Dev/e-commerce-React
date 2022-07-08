@@ -1,7 +1,7 @@
 import "./asidebar.css"
 import { FaStar } from "react-icons/fa";
-import { useEffect, useState, useContext } from 'react';
-import { useProductPageContext } from "../../context/productPageContext";
+import { useState } from 'react';
+import { useProductPageContext } from "../../context/index";
 
 
 const AsideBar = () =>{

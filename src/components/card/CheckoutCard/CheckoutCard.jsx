@@ -1,12 +1,12 @@
 import React from "react";
+import "./checkoutCard.css";
+import { Toast } from "../../Toast/Toast";
 import { FaShoppingBag } from "react-icons/fa";
 import { useCartContext } from "../../../context";
-import { Toast } from "../../Toast/Toast";
-import "./checkoutCard.css";
 import { Link, useNavigate } from "react-router-dom";
 
 function CheckoutCard() {
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
   const { state, dispatch } = useCartContext();
   const { cart } = state;
 
@@ -44,8 +44,8 @@ function CheckoutCard() {
       handler: function (response) {
         //   alert(response.razorpay_payment_id);
         Toast({ type: "success", msg: "Payment Successful🎉" });
-        dispatch({type:"CART", payload:[]})
-        navigate("/products")
+        dispatch({ type: "CART", payload: [] });
+        navigate("/products");
       },
       prefill: {
         name: "Adarsh Patel",

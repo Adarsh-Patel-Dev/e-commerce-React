@@ -1,13 +1,14 @@
 import "./navigation.css";
-
-import {  FaHeart, FaShoppingCart } from "react-icons/fa";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { MdClear, MdStoreMallDirectory } from "react-icons/md";
-import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
-import { useCartContext } from "../../context/cartContext";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../images/planet-logo.svg";
 import { useEffect, useState } from "react";
-import { useWishlistContext } from "../../context/wishListContext";
-import { useCategoryContext } from "../../context";
+import {
+  useCategoryContext,
+  useCartContext,
+  useWishlistContext,
+} from "../../context";
 
 const Navigation = () => {
   const token = localStorage.getItem("token");
@@ -16,7 +17,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const { state, setCart, dispatch } = useCartContext();
   const { cart, wishlist } = state;
-  const { searchValue, setSearchValue, category } = useCategoryContext()
+  const { searchValue, setSearchValue, category } = useCategoryContext();
 
   const encodedToken = localStorage.getItem("token");
   useEffect(() => {
@@ -24,8 +25,6 @@ const Navigation = () => {
       window.location.reload();
     }
   }, [logout]);
-
-  
 
   return (
     <nav className="nav-bar">
@@ -44,17 +43,19 @@ const Navigation = () => {
         {encodedToken && (
           <div className="nav--search">
             <input
-              onChange={(e) => {setSearchValue(e.target.value)
-                navigate('/products')}
-              }
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+                navigate("/products");
+              }}
               value={searchValue}
               type="text"
               placeholder="Search plants"
               className="nav--search--input"
             />
-            <MdClear  className="clear-icon"
-            style={{display:!searchValue.length?"none":"block"}}
-            onClick={()=>setSearchValue("")}  
+            <MdClear
+              className="clear-icon"
+              style={{ display: !searchValue.length ? "none" : "block" }}
+              onClick={() => setSearchValue("")}
             />
           </div>
         )}
@@ -69,18 +70,18 @@ const Navigation = () => {
 
             <li className="nav--item">
               <NavLink to="/wishlist" className="nav--link">
-                { wishlist.length>0 &&
+                {wishlist.length > 0 && (
                   <span className="badge--number">{wishlist.length}</span>
-                  }
+                )}
                 <FaHeart className="icons" />
               </NavLink>
             </li>
 
             <li className="nav--item">
               <NavLink to="/cart" className="nav--link">
-                { cart.length>0 &&
+                {cart.length > 0 && (
                   <span className="badge--number">{cart.length}</span>
-                  }
+                )}
                 <FaShoppingCart className="icons" />
               </NavLink>
             </li>

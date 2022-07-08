@@ -1,7 +1,7 @@
-import { useContext, createContext } from "react";
 import axios from "axios";
+import { useContext, createContext } from "react";
 import { useCartContext } from "./cartContext";
-import { Toast } from "../components/Toast/Toast"
+import { Toast } from "../components/Toast/Toast";
 
 const WishlistContext = createContext();
 const useWishlistContext = () => useContext(WishlistContext);

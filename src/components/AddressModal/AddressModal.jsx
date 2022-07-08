@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { v4 as uuid } from "uuid";
-import { MdClose } from "react-icons/md";
-import { useAddressContext } from "../../context/addressContext";
 import "./addressModal.css";
+import { v4 as uuid } from "uuid";
+import React, { useState } from "react";
+import { MdClose } from "react-icons/md";
+import { useAddressContext } from "../../context/index";
 
 function AddressModal() {
   const { state, addressDispatch } = useAddressContext();
@@ -31,11 +31,11 @@ function AddressModal() {
     id: uuid(),
   };
 
-  function editAddress(e,id) {
+  function editAddress(e, id) {
     e.preventDefault();
-    let indexOfAddress = address.findIndex(address=>address.id===id);
+    let indexOfAddress = address.findIndex((address) => address.id === id);
     if (indexOfAddress !== -1) {
-      address[indexOfAddress] = {...addressobj};
+      address[indexOfAddress] = { ...addressobj };
     }
     addressDispatch({ type: "IS_OPEN", payload: false });
   }
@@ -45,7 +45,7 @@ function AddressModal() {
     addressDispatch({ type: "ADDRESS", payload: addressobj });
     addressDispatch({ type: "IS_OPEN", payload: false });
     addressDispatch({ type: "CLEAR_DATA" });
-    addressDispatch({ type: "IS_EDIT", payload:false });
+    addressDispatch({ type: "IS_EDIT", payload: false });
   }
 
   return (
@@ -55,12 +55,17 @@ function AddressModal() {
         className="modal-container"
       >
         <div id="mymodal" className="Modal">
-          <form onSubmit={(e) => !isEdit? addressSubmit(e):editAddress(e,selectedAddressId) } className="modal--content">
+          <form
+            onSubmit={(e) =>
+              !isEdit ? addressSubmit(e) : editAddress(e, selectedAddressId)
+            }
+            className="modal--content"
+          >
             <MdClose
               onClick={() => {
                 addressDispatch({ type: "IS_OPEN", payload: false });
                 addressDispatch({ type: "CLEAR_DATA" });
-                addressDispatch({ type: "IS_EDIT", payload:false });
+                addressDispatch({ type: "IS_EDIT", payload: false });
               }}
               className="close"
             ></MdClose>
@@ -192,39 +197,49 @@ function AddressModal() {
                 placeholder="Enter Locality/Area"
               ></input>
 
-             { !isEdit ? ( <div className="modal--btn">
-                <input
-                  type="submit"
-                  value="Add Address"
-                  className="btn-modal"
-                />
-              </div>):
-              ( <div className="modal--btn">
-                <input
-                  type="submit"
-                  value="Update Address"
-                  className="btn-modal"
-                />
-              </div>)}
-
-              {!isEdit?(<div className="modal--btn">
-                <div
-                  onClick={(e) => {
-                    addressDispatch({ type: "NAME", payload: "Happy" });
-                    addressDispatch({ type: "PHONE", payload: "1234567890" });
-                    addressDispatch({ type: "PINCODE", payload: "123456" });
-                    addressDispatch({ type: "CITY", payload: "Agra" });
-                    addressDispatch({ type: "STATE", payload: "MP" });
-                    addressDispatch({ type: "AREA", payload: "Viraj Khand,Gomti Nagar" });
-                    addressDispatch({ type: "FLAT_NUM", payload: "22" });
-                    addressDispatch({ type: "ADDRESS_ID", payload: uuid() });
-                  }}
-                  name="Add Address"
-                  className="btn-modal outline-btn"
-                >
-                  Test Address
+              {!isEdit ? (
+                <div className="modal--btn">
+                  <input
+                    type="submit"
+                    value="Add Address"
+                    className="btn-modal"
+                  />
                 </div>
-              </div>):""}
+              ) : (
+                <div className="modal--btn">
+                  <input
+                    type="submit"
+                    value="Update Address"
+                    className="btn-modal"
+                  />
+                </div>
+              )}
+
+              {!isEdit ? (
+                <div className="modal--btn">
+                  <div
+                    onClick={(e) => {
+                      addressDispatch({ type: "NAME", payload: "Happy" });
+                      addressDispatch({ type: "PHONE", payload: "1234567890" });
+                      addressDispatch({ type: "PINCODE", payload: "123456" });
+                      addressDispatch({ type: "CITY", payload: "Agra" });
+                      addressDispatch({ type: "STATE", payload: "MP" });
+                      addressDispatch({
+                        type: "AREA",
+                        payload: "Viraj Khand,Gomti Nagar",
+                      });
+                      addressDispatch({ type: "FLAT_NUM", payload: "22" });
+                      addressDispatch({ type: "ADDRESS_ID", payload: uuid() });
+                    }}
+                    name="Add Address"
+                    className="btn-modal outline-btn"
+                  >
+                    Test Address
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </form>
         </div>

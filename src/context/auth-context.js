@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Toast } from "../components/Toast/Toast";
-import { createContext, useContext, useReducer,useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 
 const AuthContext = createContext();
 
@@ -29,7 +29,7 @@ const AuthReducer = (state, { type, payload }) => {
 };
 
 const AuthProvider = ({ children }) => {
-  const [userName, setUserName ] = useState('')
+  const [userName, setUserName] = useState("");
   const [authState, authDispatch] = useReducer(AuthReducer, {
     firstName: "",
     lastname: "",
@@ -38,35 +38,47 @@ const AuthProvider = ({ children }) => {
     confirmPassword: "",
   });
 
-
-  async function signUp(firstName, lastname, email, pasword, navigate, location, encodedToken) {
-    if( firstName === "" || lastname === "" || email === "" ||pasword === "" ){
-
-      Toast({ type: "error", msg: "Please input all fields."});
+  async function signUp(
+    firstName,
+    lastname,
+    email,
+    pasword,
+    navigate,
+    location,
+    encodedToken
+  ) {
+    if (firstName === "" || lastname === "" || email === "" || pasword === "") {
+      Toast({ type: "error", msg: "Please input all fields." });
     }
     try {
-      const regExForEmail =  /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
-      if(encodedToken){
-          Toast({ type: "info", msg: `Hey ${response.data.createdUser.someUserAttribute1}, you're already Logged IN 😎`  });
+      const regExForEmail = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+      if (encodedToken) {
+        Toast({
+          type: "info",
+          msg: `Hey ${response.data.createdUser.someUserAttribute1}, you're already Logged IN 😎`,
+        });
       }
-      if(regExForEmail.test(email)){
+      if (regExForEmail.test(email)) {
         const response = await axios({
-        method: "POST",
-        url: "/api/auth/signup",
-        data: {
-          email: email,
-          password: pasword,
-          someUserAttribute1: firstName,
-          someUserAttribute2: lastname,
-        },
-      });
-      if (response.status === 201) {
-        localStorage.setItem("token",response.data.encodedToken);
-        navigate(location?.state?.from?.pathname, { replace: true})
-        Toast({ type: "success", msg: `Welcome ${response.data.createdUser.someUserAttribute1}` });
-        setUserName(response.data.createdUser.someUserAttribute1)
-      } else{
-          console.log("Wrong Email format!!!")
+          method: "POST",
+          url: "/api/auth/signup",
+          data: {
+            email: email,
+            password: pasword,
+            someUserAttribute1: firstName,
+            someUserAttribute2: lastname,
+          },
+        });
+        if (response.status === 201) {
+          localStorage.setItem("token", response.data.encodedToken);
+          navigate(location?.state?.from?.pathname, { replace: true });
+          Toast({
+            type: "success",
+            msg: `Welcome ${response.data.createdUser.someUserAttribute1}`,
+          });
+          setUserName(response.data.createdUser.someUserAttribute1);
+        } else {
+          console.log("Wrong Email format!!!");
           Toast({ type: "error", msg: "Wrong Email format!!!" });
         }
       }
@@ -77,7 +89,7 @@ const AuthProvider = ({ children }) => {
   }
 
   async function login(email, password, navigate, location, encodedToken) {
-    if( email === "" || password === ""){
+    if (email === "" || password === "") {
       Toast({ type: "error", msg: "Enter all inputs." });
     }
     try {
@@ -90,8 +102,8 @@ const AuthProvider = ({ children }) => {
         },
       });
       if (response.status === 200) {
-        localStorage.setItem("token",response.data.encodedToken);
-        navigate(location?.state?.from?.pathname, { replace: true})
+        localStorage.setItem("token", response.data.encodedToken);
+        navigate(location?.state?.from?.pathname, { replace: true });
         Toast({ type: "success", msg: "Log In successful" });
       }
     } catch (error) {
@@ -101,7 +113,9 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ authState, authDispatch, login, signUp, userName }}>
+    <AuthContext.Provider
+      value={{ authState, authDispatch, login, signUp, userName }}
+    >
       {children}
     </AuthContext.Provider>
   );

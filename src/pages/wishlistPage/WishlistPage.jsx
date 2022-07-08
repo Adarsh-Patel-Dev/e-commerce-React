@@ -1,12 +1,9 @@
-import { Navigation } from "../../components/navigation/Navigation";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import "./wishlistPage.css";
 import { useEffect } from "react";
-import { useWishlistContext } from "../../context/wishListContext";
-import { useCartContext } from "../../context/cartContext";
-import axios from "axios";
-import { CardVertical } from "../../components/card/CardVertical";
+import { Link } from "react-router-dom";
+import { useWishlistContext, useCartContext } from "../../context/index";
+import { CardVertical } from "../../components/index";
 
 const WishlistPage = () => {
   const { dispatch, addToCart, wishlist } = useCartContext();

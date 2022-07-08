@@ -202,7 +202,7 @@ const ProductListing = () => {
 
   const searchResultData = finalCategoryData.filter(
     (data) =>
-    data.title.includes(searchValue) ||
+      data.title.includes(searchValue) ||
       data.title.toLowerCase().includes(searchValue) ||
       data.title.toUpperCase().includes(searchValue) ||
       data.desc.includes(searchValue) ||
@@ -212,7 +212,6 @@ const ProductListing = () => {
 
   return (
     <>
-
       <section className="body-section">
         <AsideBar />
         <section className="main-section">

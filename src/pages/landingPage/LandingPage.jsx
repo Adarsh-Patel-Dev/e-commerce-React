@@ -1,5 +1,7 @@
 import "./landingPage.css";
-import { FaArrowRight, FaArrowDown } from "react-icons/fa";
+import { useEffect } from "react";
+import axios from "axios";
+import { FaArrowRight } from "react-icons/fa";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { Navigation, CardVertical, Category } from "../../components/";
 import HeroImg from "../../images/pngegg.png";
@@ -7,10 +9,8 @@ import {
   useCartContext,
   useWishlistContext,
   useProductPageContext,
+  useCategoryContext,
 } from "../../context/";
-import { useCategoryContext } from "../../context";
-import { useEffect } from "react";
-import axios from "axios";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -18,10 +18,10 @@ const LandingPage = () => {
     useProductPageContext();
   const { state, dispatch } = useCartContext();
   const { cart } = state;
-  const { setWishlist, addToWishlist } = useWishlistContext();
+  const { addToWishlist } = useWishlistContext();
   const { addToCart } = useCartContext();
 
-  const { searchValue, setSearchValue, category } = useCategoryContext();
+  const { category } = useCategoryContext();
 
   useEffect(() => {
     (async () => {

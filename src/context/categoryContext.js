@@ -9,7 +9,6 @@ const CategoryProvider = ({ children }) => {
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    
     (async function getAllCategory() {
       const response = await axios({
         method: "get",
@@ -23,7 +22,6 @@ const CategoryProvider = ({ children }) => {
       }
     })();
   }, []);
-
 
   async function getCategory(categoryId) {
     const response = await axios({
