@@ -1,8 +1,8 @@
 import "./navigation.css";
 
-import { FaSearch, FaRegHeart, FaHeart, FaShoppingCart } from "react-icons/fa";
-import { MdOutlineShoppingCart, MdShoppingCart, MdClear, MdStoreMallDirectory } from "react-icons/md";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import {  FaHeart, FaShoppingCart } from "react-icons/fa";
+import { MdClear, MdStoreMallDirectory } from "react-icons/md";
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import { useCartContext } from "../../context/cartContext";
 import Logo from "../../images/planet-logo.svg";
 import { useEffect, useState } from "react";
@@ -13,6 +13,7 @@ const Navigation = () => {
   const token = localStorage.getItem("token");
   const [logout, setLogout] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { state, setCart, dispatch } = useCartContext();
   const { cart, wishlist } = state;
   const { searchValue, setSearchValue, category } = useCategoryContext()
@@ -43,11 +44,12 @@ const Navigation = () => {
         {encodedToken && (
           <div className="nav--search">
             <input
-              onChange={(e) => setSearchValue(e.target.value)
+              onChange={(e) => {setSearchValue(e.target.value)
+                navigate('/products')}
               }
               value={searchValue}
               type="text"
-              placeholder="Search"
+              placeholder="Search plants"
               className="nav--search--input"
             />
             <MdClear  className="clear-icon"
@@ -60,7 +62,7 @@ const Navigation = () => {
         <div className="nav--links">
           <ul className="nav--list">
             <li className="nav--item">
-              <NavLink to="/checkout" className="nav--link">
+              <NavLink to="/products" className="nav--link">
                 <MdStoreMallDirectory className="icons" />
               </NavLink>
             </li>

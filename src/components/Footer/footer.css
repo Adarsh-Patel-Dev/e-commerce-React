@@ -44,20 +44,14 @@
 }
 
 .social-media-icons li:hover{
-    background-color:var(--LIGHT-GREEN);
+    background-color:var(--GRAY-80);
     color: var(--BLACK-60);
     transition: 1s;
+    transform: scale(1.1);
     aspect-ratio: 1/1;
 }
 
 
-.btn--float{
-    background-color: transparent;
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-}
-
-.icon-up{
-    font-size: 2rem;
+.grid{
+    display: grid;
 }

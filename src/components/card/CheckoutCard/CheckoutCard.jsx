@@ -3,10 +3,11 @@ import { FaShoppingBag } from "react-icons/fa";
 import { useCartContext } from "../../../context";
 import { Toast } from "../../Toast/Toast";
 import "./checkoutCard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function CheckoutCard() {
-  const { state } = useCartContext();
+  const navigate = useNavigate();  
+  const { state, dispatch } = useCartContext();
   const { cart } = state;
 
   const price = cart.reduce(
@@ -43,6 +44,8 @@ function CheckoutCard() {
       handler: function (response) {
         //   alert(response.razorpay_payment_id);
         Toast({ type: "success", msg: "Payment Successful🎉" });
+        dispatch({type:"CART", payload:[]})
+        navigate("/products")
       },
       prefill: {
         name: "Adarsh Patel",
@@ -67,7 +70,7 @@ function CheckoutCard() {
       <div className="price-component width-auto">
         <div className="price-table">
           <h2 className="price-component-heading">
-            <FaShoppingBag /> Your Order Summary
+            <FaShoppingBag className="green" /> <span>Your Order Summary</span>
           </h2>
           <Link to="/cart">
             <p className="edit-btn">Edit Bag</p>

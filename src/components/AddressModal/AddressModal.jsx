@@ -19,8 +19,7 @@ function AddressModal() {
     isEdit,
     selectedAddressId,
   } = state;
-  console.log("addressState", address);
-  console.log("addressSelected", selectedAddressId);
+
   let addressobj = {
     name,
     phone,
@@ -32,14 +31,9 @@ function AddressModal() {
     id: uuid(),
   };
 
-  function deleteAddress(id) {
-    return address.filter(address.id !== id);
-  }
-
   function editAddress(e,id) {
     e.preventDefault();
     let indexOfAddress = address.findIndex(address=>address.id===id);
-    console.log("index",indexOfAddress)
     if (indexOfAddress !== -1) {
       address[indexOfAddress] = {...addressobj};
     }
@@ -220,8 +214,8 @@ function AddressModal() {
                     addressDispatch({ type: "PHONE", payload: "1234567890" });
                     addressDispatch({ type: "PINCODE", payload: "123456" });
                     addressDispatch({ type: "CITY", payload: "Agra" });
-                    addressDispatch({ type: "STATE", payload: "UP" });
-                    addressDispatch({ type: "AREA", payload: "Gomti Nagar" });
+                    addressDispatch({ type: "STATE", payload: "MP" });
+                    addressDispatch({ type: "AREA", payload: "Viraj Khand,Gomti Nagar" });
                     addressDispatch({ type: "FLAT_NUM", payload: "22" });
                     addressDispatch({ type: "ADDRESS_ID", payload: uuid() });
                   }}

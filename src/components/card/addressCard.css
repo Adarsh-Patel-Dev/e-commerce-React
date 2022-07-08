@@ -54,10 +54,13 @@
     background: transparent;
     font-size: 1.2rem;
     font-weight: 700;
+    transition: 1s;
+    border-radius: 5px;
 }
 
 .footer-btn button:hover{
-    transform: scale(1.1);
+    background: #b5b6ee8a;;
+    transition: 1s;
 }
 .delete-btn{
     color: red;

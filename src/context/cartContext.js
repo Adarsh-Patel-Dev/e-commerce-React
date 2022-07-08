@@ -27,7 +27,6 @@ const CartProvider = ({children}) => {
     const { cart, wishlist } = state;
 
     async function addToCart (item, dispatch){
-      console.log("Cart add")
       if( (cart.find((element) => element._id === item._id))) {
         console.log("Item is already in cart")
       }
@@ -41,7 +40,6 @@ const CartProvider = ({children}) => {
      
        if(response.status === 201) {
          dispatch({type: 'CART', payload: response.data.cart});
-         console.log("from cart add",response.data.cart);
          Toast({ type: "success", msg: "Product added to cart" });
        }
       }
@@ -66,8 +64,6 @@ const CartProvider = ({children}) => {
 
         if (response.status === 200) {
           dispatch({type: "CART", payload: response.data.cart})
-         console.log("from cart update",response.data.cart);
-
           Toast({ type: "success", msg: "Product quantity updated in cart."});
         }
       } catch (err) {
@@ -85,7 +81,6 @@ const CartProvider = ({children}) => {
           },
         })
         dispatch({type:"CART", payload:response.data.cart})
-        console.log("from cart remove",response.data.cart);
         Toast({ type: "success", msg: "Product removed from cart" });
       };
 

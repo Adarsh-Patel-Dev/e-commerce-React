@@ -40,7 +40,6 @@ const CategoryProvider = ({ children }) => {
         setSearchValue,
         category,
         setCategory,
-        // getAllCategory,
         getCategory,
       }}
     >

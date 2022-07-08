@@ -20,7 +20,6 @@ const CartPage = () => {
         headers: { authorization: localStorage.getItem("token") },
       });
       if (response.status === 200) {
-        console.log("reso", response.data.cart);
         dispatch({ type: "CART", payload: response.data.cart });
       }
     })();

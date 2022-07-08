@@ -21,13 +21,13 @@ function Footer() {
                 target={"_blank"}
                 rel="noreferrer"
               >
-                <FaLinkedinIn />
+                <FaLinkedinIn className="grid"/>
               </a>
             </li>
 
             <li>
               <a href="https://github.com/Adarsh-Patel-Dev">
-                <FaGithub />
+                <FaGithub className="grid"/>
               </a>
             </li>
 
@@ -37,7 +37,7 @@ function Footer() {
                 target={"_blank"}
                 rel="noreferrer"
               >
-                <FaTwitter />
+                <FaTwitter className="grid"/>
               </a>
             </li>
           </ul>
