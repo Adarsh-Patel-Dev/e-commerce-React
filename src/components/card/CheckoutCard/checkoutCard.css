@@ -1,0 +1,70 @@
+.price--table {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 3rem;
+    gap: 3rem;
+}
+
+
+.width-auto{
+    width: auto;
+    height: auto;
+    padding: 2.5rem 4rem;
+}
+
+.width-13{
+    width:max-content;
+}
+
+.item-qty{
+        border: 1px solid gray;
+        padding: 0px 10px;
+        border-radius: 5px;
+}
+
+.price--table--img {
+    margin-bottom:1rem;
+    display: flex;
+    width: 19rem;
+    height: 10rem;
+    aspect-ratio: 1/1;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.price--table--img img{
+    object-fit: scale-down;
+    margin-left: -4rem;
+}
+
+.price--table--desc{
+    width: 15rem;
+}
+
+.strike-through{
+    text-decoration: line-through;
+    color: gray;
+}
+
+
+.center {
+    padding-bottom: 2.5rem;
+    align-items: center;
+}
+
+.pay-btn {
+    width: 60%;
+    margin: 2rem auto;
+    margin-right: 0;
+}
+
+.pay-btn:hover{
+    transform: scale(1.1);
+    /* margin: 17px auto; */
+}
+
+.flex-end{
+    justify-content: flex-end;
+}
+

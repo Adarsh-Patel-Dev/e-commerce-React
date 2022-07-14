@@ -1,0 +1,70 @@
+.addressCard-container{
+    margin-bottom: 2rem ;
+    width: 35rem;
+    padding: 1.5rem;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px var(--BOX-SHADOW);
+}
+
+.address-hearder{
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.address-header-heading {
+    font-size: 1.5rem;
+    display: flex;
+    grid-gap: 7px;
+    gap: 7px;
+    align-items: center;
+    font-weight: 600;
+}
+
+.userName{
+    font-size: 2rem;
+    font-weight:500;
+    padding: 1rem 0;
+}
+
+.address-phone{
+    padding: 1rem 0;
+    font-weight: 600;
+}
+
+.addressCard-container p{
+    color: black;
+    font-size: 1.2rem;
+
+}
+
+
+.footer-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.footer-btn button{
+    font-family: inherit;
+    border: none;
+    padding: 1rem;
+    background: transparent;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: 1s;
+    border-radius: 5px;
+}
+
+.footer-btn button:hover{
+    background: #b5b6ee8a;;
+    transition: 1s;
+}
+.delete-btn{
+    color: red;
+}
+.edit-btn{
+    color: rgb(62, 62, 245);
+}

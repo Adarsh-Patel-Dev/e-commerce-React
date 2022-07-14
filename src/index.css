@@ -11,3 +11,18 @@ button{
 .light-green{
   color: #76C310;
 }
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+}
+
+img{
+  object-fit: cover;
+}
+
+a{
+  color:white;
+}

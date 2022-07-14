@@ -9,7 +9,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Areca Plant",
-    desc: "Green Arcea Palm Air Purifier Natural Live Plant",
+    desc: "Green Arcea Palm Air Purifier Natural Live Plant. It is very popular indoor plant.",
     rating: 3.4,
     inStock: true,
     price: {
@@ -41,7 +41,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Monstera Deliciosa Plant",
-    desc: "Loved for beautiful leathery green foliage Plant with self watering pot",
+    desc: "Loved for beautiful leathery green foliage Plant with self watering pot. It is perfect plant for home decor",
     rating: 4.5,
     inStock: false,
     price: {
@@ -72,7 +72,7 @@ export const products = [
   
   {
     _id: uuid(),
-    title: " Lucky Bamboo Plant",
+    title: "Lucky Bamboo Plant",
     desc: "One of the popular indoor plant it is easy to care for making it a perfect plant for home decor.",
     rating: 3.1,
     inStock: true,
@@ -136,7 +136,7 @@ export const products = [
   
   {
     _id: uuid(),
-    title: "Red Rose Plant Button Rose ",
+    title: "Red Rose Plant",
     desc: "Red Rose Plant Button Rose with White Pot In Green Colour. It is a very popular plant for indoor use.",
     rating: 5.0,
     inStock: true,
@@ -149,5 +149,5 @@ export const products = [
     img:"https://m.media-amazon.com/images/I/61xHxnPAlyL._SL1000_.jpg",
     categoryName: "FloweringPlants",
   },
-  
+
 ];

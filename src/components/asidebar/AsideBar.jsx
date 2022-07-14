@@ -1,7 +1,7 @@
 import "./asidebar.css"
 import { FaStar } from "react-icons/fa";
-import { useEffect, useState, useContext } from 'react';
-import { useProductPageContext } from "../../context/productPageContext";
+import { useState } from 'react';
+import { useProductPageContext } from "../../context/index";
 
 
 const AsideBar = () =>{
@@ -18,7 +18,6 @@ const AsideBar = () =>{
         productDispatch({type:"PRICERANGE", payload:2500})
 
         productDispatch({type:"CATEGORY", payload:{ airPurifyingPlants:false,floweringPlants:false, indoorPlants: false, herbPlants: false,}})
-        console.log("clicked");
         setKey(key + 1);
     }
     
@@ -60,7 +59,7 @@ const AsideBar = () =>{
                
                 <div className="checkbox-input">
                     <input type="checkbox"
-                    onChange={(e) => productDispatch({type:"AIRPURIFYINGPLANT"})}
+                    onChange={(e) => productDispatch({type:"AIRPURIFYINGPLANTS"})}
                     checked={airPurifyingPlants}
                      name="check" className="checkbox" /><label htmlFor="check"> Air Purifying
                         Plants</label>
@@ -68,21 +67,21 @@ const AsideBar = () =>{
 
                 <div className="checkbox-input">
                     <input type="checkbox"
-                     onChange={(e) => productDispatch({type:"FLOWERINGPLANT"})}
+                     onChange={(e) => productDispatch({type:"FLOWERINGPLANTS"})}
                      checked={floweringPlants}
                      name="check" className="checkbox" /><label htmlFor="check"> Flowering Plants</label>
                 </div>
                 
                 <div className="checkbox-input">
                     <input type="checkbox" 
-                    onChange={(e) => productDispatch({type:"INDOORPLANT"})}
+                    onChange={(e) => productDispatch({type:"INDOORPLANTS"})}
                     checked={indoorPlants}
                     name="check" className="checkbox" /><label htmlFor="check"> Indoor Plants</label>
                 </div>
 
                 <div className="checkbox-input">
                     <input type="checkbox"
-                    onChange={(e) => productDispatch({type:"HERBPLANT"})}
+                    onChange={(e) => productDispatch({type:"HERBPLANTS"})}
                     checked = { herbPlants }
                      name="check" className="checkbox" /><label htmlFor="check"> Herb Plants</label>
                 </div>

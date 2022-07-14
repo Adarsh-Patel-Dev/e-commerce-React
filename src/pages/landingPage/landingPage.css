@@ -65,7 +65,7 @@ img{
     font-family: inherit;
     border: none;
     background-color: var(--LIGHT-GREEN);
-    color: var(--WHITE);
+    color: var(--GRAY-80);
     border-radius: 5px;
     margin-bottom: 10px;
     transition: 0.5s;
@@ -73,7 +73,7 @@ img{
 }
 
 .primary-cta:hover {
-    background-color: #15151500;
+    background-color: var(--GRAY-80);
     color: var(--LIGHT-GREEN);
     transition: 0.5s;
     box-shadow: 0px 0px 10px #868585;;
@@ -103,7 +103,7 @@ img{
 
 .category-section{
     background-color: #75c31083;
-    padding-top: 10rem;
+    padding: 3rem 0;
 }
 
 .category-heading{
@@ -123,8 +123,7 @@ img{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
-   padding: 2rem;
+    gap: 3rem;
    margin: auto;
 }
 
@@ -134,7 +133,7 @@ img{
     justify-content: center;
     border: 2px solid var(--GRAY-50);
     padding: 3rem;
-    width: 30rem;
+    width: 25rem;
     border-radius: 1rem;
     font-size: 2rem;
     height: 15rem;
@@ -142,17 +141,18 @@ img{
 }
 
 .category-container:hover{
+    cursor: pointer;
+    transform: scale(1.1);
     color: var(--WHITE); 
     background-color: var(--LIGHT-GREEN);
-    border: transparent;
     transition: 0.5s;
-    box-shadow: 0px 0px 15px #636060 ;
+    box-shadow: 0px 0px 15px white ;
 }
 
 .category-link{
     display: flex;
     align-items: center;
-    gap: 5rem;
+    gap: 4rem;
     text-decoration: none;
     color: var(--BLACK-80);
     transition: 0.5s;
