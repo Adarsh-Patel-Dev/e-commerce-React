@@ -16,6 +16,8 @@ This app is build using ReactJS, mockbee which has following functionalities:
  * Filter by rating
  * Filter by Price
  * Clearing all filters
+ * Cart Management
+ * Wishlist Management
  * Address Management
  * Razorpay Payment Integration
  
